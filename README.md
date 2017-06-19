@@ -1,8 +1,22 @@
 # magenta
 
 ## Team Name
+Reflect
 
-## Project Description
+## Team Members
+- Meryl Turner
+- Stephanie Fitzgerald
+- Pierre Salumu
+
+## Project Pitch
+The current political climate is very divided, with stratification of political idealogies becoming commonplace. Often busy users will see only headlines, or otherwise brief summaries of the news, and more specifically from their own news buble, rather than complete, well-balanced stories.
+
+We want to open up a dialogue between opposing sides, bridging the divide between left and right news bubbles. By encouraging users to focus on the language in headlines, we want them to reflect on the political bias inherent in many news sources, as well as on their own internal biases.
+
+Some questions that drive us:
+- How do we open up a dialogue?
+- How are different news headlines perceived?
+- How does the media's language affect our stance on current political issues?
 
 ## Other stuff...
 
