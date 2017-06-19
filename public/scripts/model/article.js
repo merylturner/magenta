@@ -1,6 +1,6 @@
 'use strict';
 
-const app = app || {};
+var app = app || {};
 
 (function(module){
     function Article(sourceData) {
