@@ -16,6 +16,7 @@ MVP:
 - to see my results compared to my peers' and see where the headlines come from so I can pay attention to the language used
 - to know about the people who made the app to satisfy my curiosity
 - to be able to leave feedback
+
 Stretch:
 - to see my feedback displayed on the site
 
@@ -30,5 +31,6 @@ MVP:
 - to use a news API that lets me get data about current news, including at a minimum a headline, source, and link to the article
 - to use normalized tables in my database in order to keep it all organized and unduplicated
 - make news and politics more digestible by avoiding being overly heavy in tone or design
+
 Stretch:
 - to display comments and animate them
