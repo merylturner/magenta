@@ -2,60 +2,24 @@
 
 var app = app || {};
 
-(function(module){
-    function Article(sourceData) {
-        Object.keys(sourceData).forEach( key => this[key] = sourceData[key] );
-    }
+(function (module) {
 
-    Article.all = [];
+	const sourceArticles = {};
+	sourceArticles.all = [];
+    console.log(sourceArticles.all);
 
-    Article.loadAll = rows => {
-        rows.sort((a,b) => (new Date(b.publishedAt)) - (new Date(a.publishedAt)));
-        Article.all = rows.map(obj => new Article(obj));
-    };
-
-    Article.fetchAll = callback => {
-        $.get('/articles')
-        .then(
-            results => {
-                Article.loadAll(results);
-                callback();
-            }
-        );
-    };
-
-    // COMMENT: Do we want to use this?
-    Article.truncateTable = callback => {
-        $.ajax({
-            url: '/articles',
-            method: 'DELETE',
-        })
-            .then(console.log)
+	sourceArticles.requestArticles = function (callback) {
+		console.log('requestArticles is listening');
+        $.get('/news')
+            // .then(data => sourceArticles.all = data, err => console.error(err))
+            .then(data => console.log(data), err => console.error(err))
             .then(callback);
-    };
-    
-    Article.prototype.insertRecord = function (callback) {
-        $.post('/articles', {
-            title: this.title,
-            description: this.description,
-            url: this.url,
-            sourceId: this.source_id,
-            author: this.author,
-            urlToImage: this.url_to_image,
-            publishedAt: this.published_at
-        })
-            .then(console.log)
-            .then(callback);
-    };
+	};
 
-    // COMMENT: Do we need a deleteRecord method?
-    // Article.prototype.deleteRecord = function(callback) {
-    //     $.ajax({
-    //         url: ''
-    //     })
-    // }
-    // COMMENT: Do we need an updateRecord method?
-    // Article.prototype.updateRecord = function(callback) {}
 
-    module.Article = Article;
+    // COMMENT: stretch goal: filtering by source or something else?
+    // sourceArticles.with = attr => sourceArticles.all.filter( sourceArticle => sourceArticle[attr]);
+    sourceArticles.requestArticles();
+	module.sourceArticles = sourceArticles;
+
 }(app));
