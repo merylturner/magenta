@@ -8,9 +8,11 @@ var app = app || {};
 	sourceArticles.all = [];
 
 	sourceArticles.requestArticles = function (callback) {
-		console.log('requestArticles is listening');
         $.get('/news')
-            .then(data => sourceArticles.all = (JSON.parse(data).articles), err => console.error(err))
+            .then(data => {
+				sourceArticles.all = (JSON.parse(data).articles);
+				sourceArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
+			}, err => console.error(err))
             // .then(data => console.log(data), err => console.error(err))
             .then(callback);
 	};
@@ -24,6 +26,7 @@ var app = app || {};
 		function Article (sourceArticleData) {
 			Object.keys(sourceArticleData).forEach(key => this[key] = sourceArticleData[key]);
 		}
+
 
 		function loadArticles() {
 			Article.all = sourceArticles.all.map(obj => new Article(obj));
