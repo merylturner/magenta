@@ -11,7 +11,7 @@ const requestProxy = require('express-request-proxy');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const conString = 'postgres://postgres:dada1@localhost:5432/magenta';
+const conString = 'postgres://localhost:5432/magenta';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
