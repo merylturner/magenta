@@ -4,17 +4,31 @@ var app = app || {};
 
 (function (module) {
 
-	let sourceArticles = {};
-	sourceArticles.all = [];
+	let huffpoArticles = {};
+	huffpoArticles.all = [];
+	let nytArticles = {};
+	nytArticles.all = [];
 
-	sourceArticles.requestArticles = function (callback) {
-		$.get('/news')
+
+	huffpoArticles.requestArticles = function (callback) {
+		$.get('/huffpo')
 			.then(data => {
-				sourceArticles.all = (JSON.parse(data).articles);
-				sourceArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
-				sourceArticles.all.forEach(obj => obj.shown = false);
+				huffpoArticles.all = (JSON.parse(data).articles);
+				huffpoArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
+				huffpoArticles.all.forEach(obj => obj.shown = false);
 			}, err => console.error(err))
-			.then(Article.loadArticles)
+			.then(Article.loadHuffpoArticles)
+			.then(callback);
+	};
+
+	nytArticles.requestArticles = function (callback) {
+		$.get('/nyt')
+			.then(data => {
+				nytArticles.all = (JSON.parse(data).articles);
+				nytArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
+				nytArticles.all.forEach(obj => obj.shown = false);
+			}, err => console.error(err))
+			.then(Article.loadNytArticles)
 			.then(callback);
 	};
 
@@ -22,17 +36,28 @@ var app = app || {};
 		Object.keys(sourceArticleData).forEach(key => this[key] = sourceArticleData[key]);
 	}
 
-	Article.all = [];
+	Article.huffpo = [];
+	Article.nyt = [];
+	
 
-	Article.loadArticles = function() {
-		Article.all = sourceArticles.all.map(obj => new Article(obj))
+	Article.loadHuffpoArticles = function() {
+		Article.huffpo = huffpoArticles.all.map(obj => new Article(obj))
 			.reduce((titles, title) => {
 				if (titles.indexOf(title) === -1) titles.push(title);
 				return titles;
 			}, [])
 			.filter(t => t.shown === false);
+		return Article.huffpo;
+	};
 
-		return Article.all;
+	Article.loadNytArticles = function() {
+		Article.nyt = nytArticles.all.map(obj => new Article(obj))
+			.reduce((titles, title) => {
+				if (titles.indexOf(title) === -1) titles.push(title);
+				return titles;
+			}, [])
+			.filter(t => t.shown === false);
+		return Article.nyt;
 	};
 
 	Article.selectRandom = function (array) {
@@ -40,6 +65,7 @@ var app = app || {};
 		return array[randomNum];
 	};
 
-	module.sourceArticles = sourceArticles;
+	module.nytArticles = nytArticles;
+	module.huffpoArticles = huffpoArticles;
 	module.Article = Article;
 }(app));

@@ -29,9 +29,15 @@ app.use(express.static('./public'));
 // 	}))(request, response);
 // }
 
-app.get('/news',(request,response) => {
+app.get('/huffpo',(request,response) => {
 	superagent
 		.get('https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=8b0471f5a1944ee2af4d504c01289139')
+		.end((err, superagentResponse) => response.send(superagentResponse.text));
+} );
+
+app.get('/nyt',(request,response) => {
+	superagent
+		.get('https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=8b0471f5a1944ee2af4d504c01289139')
 		.end((err, superagentResponse) => response.send(superagentResponse.text));
 } );
 

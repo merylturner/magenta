@@ -6,12 +6,16 @@ var app = app || {};
 	const articleController = {};
 
 	articleController.randomArticle = function() {
-		return app.Article.selectRandom(app.Article.loadArticles());
+		let nytArticle = app.Article.selectRandom(app.Article.loadNytArticles());
+		let huffpoArticle = app.Article.selectRandom(app.Article.loadHuffpoArticles());
+		let consolidatedArray = [huffpoArticle, nytArticle];
+		return app.Article.selectRandom(consolidatedArray);
 	};
-	
+
 	// COMMENT: stretch goal: filtering by source or something else?
 	// sourceArticles.with = attr => sourceArticles.all.filter( sourceArticle => sourceArticle[attr]);
-	app.sourceArticles.requestArticles(app.articleView.init);
+	app.nytArticles.requestArticles();
+	app.huffpoArticles.requestArticles(app.articleView.init);
 
 
 	module.articleController = articleController;
