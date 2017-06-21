@@ -4,30 +4,68 @@ var app = app || {};
 
 (function (module) {
 
-	const sourceArticles = {};
-	// sourceArticles.all = [];
+	let huffpoArticles = {};
+	huffpoArticles.all = [];
+	let nytArticles = {};
+	nytArticles.all = [];
 
-	sourceArticles.requestArticles = function (callback) {
-		console.log('requestArticles is listening');
-        $.get('/news')
-            .then(data => console.log(JSON.parse(data).articles), err => console.error(err))
-            // .then(data => console.log(data), err => console.error(err))
-            .then(callback);
+
+	huffpoArticles.requestArticles = function (callback) {
+		$.get('/huffpo')
+			.then(data => {
+				huffpoArticles.all = (JSON.parse(data).articles);
+				huffpoArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
+				huffpoArticles.all.forEach(obj => obj.shown = false);
+			}, err => console.error(err))
+			.then(Article.loadHuffpoArticles)
+			.then(callback);
 	};
 
+	nytArticles.requestArticles = function (callback) {
+		$.get('/nyt')
+			.then(data => {
+				nytArticles.all = (JSON.parse(data).articles);
+				nytArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
+				nytArticles.all.forEach(obj => obj.shown = false);
+			}, err => console.error(err))
+			.then(Article.loadNytArticles)
+			.then(callback);
+	};
 
-    // COMMENT: stretch goal: filtering by source or something else?
-    // sourceArticles.with = attr => sourceArticles.all.filter( sourceArticle => sourceArticle[attr]);
-    sourceArticles.requestArticles();
-		function Article (sourceArticleData) {
-			Object.keys(sourceArticleData.articles).forEach(key => this[key] = sourceArticleData[key]);
-			console.log(sourceArticleData.articles);
-		}
-		Article.all = [];
-		// Article.all = sourceArticles.all.map(obj => new Article (obj));
-		console.log(Article.all);
+	function Article(sourceArticleData) {
+		Object.keys(sourceArticleData).forEach(key => this[key] = sourceArticleData[key]);
+	}
 
+	Article.huffpo = [];
+	Article.nyt = [];
+	
 
-	module.sourceArticles = sourceArticles;
+	Article.loadHuffpoArticles = function() {
+		Article.huffpo = huffpoArticles.all.map(obj => new Article(obj))
+			.reduce((titles, title) => {
+				if (titles.indexOf(title) === -1) titles.push(title);
+				return titles;
+			}, [])
+			.filter(t => t.shown === false);
+		return Article.huffpo;
+	};
 
+	Article.loadNytArticles = function() {
+		Article.nyt = nytArticles.all.map(obj => new Article(obj))
+			.reduce((titles, title) => {
+				if (titles.indexOf(title) === -1) titles.push(title);
+				return titles;
+			}, [])
+			.filter(t => t.shown === false);
+		return Article.nyt;
+	};
+
+	Article.selectRandom = function (array) {
+		let randomNum = Math.floor(Math.random() * (array.length));
+		return array[randomNum];
+	};
+
+	module.nytArticles = nytArticles;
+	module.huffpoArticles = huffpoArticles;
+	module.Article = Article;
 }(app));
