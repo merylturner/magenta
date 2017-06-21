@@ -38,12 +38,9 @@ var app = app || {};
         selectedObj.voteCenter = 0;
         selectedObj.voteCenterRight = 0;
         selectedObj.voteRight = 0;
-        
-
-
-
-        console.log(selection);
-        console.log(selectedObj);
+        if (selectedObj.hasOwnProperty(selection)) {
+            selectedObj[selection] += 1;
+        }
 
     });
 
