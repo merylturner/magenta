@@ -5,11 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Reflect</title>
+    <script id="template" type="text/x-handlebars-template">
+        <p>{{title}}</p>
+        <p>How would you rate the slant of this unknown news source based on the language of this article headline?</p>
+    </script>
+
 </head>
 
 <body>
-    <p>Hello world</p>
+    <main>
+        <section id="headline"></section>
+        <section>
+            <p></p>
+        </section>
+
+
+    </main>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
