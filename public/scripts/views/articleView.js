@@ -2,18 +2,18 @@
 
 var app = app || {};
 
-(function(module){
+(function (module) {
     const articleView = {};
     let selectedObj = {};
 
-    const render = function(title) {
+    const render = function (title) {
         let template = Handlebars.compile($('#template').text()); // eslint-disable-line
 
         return template(title);
     };
 
-// COMMENT: Maybe sometime cache this selected article object in local storage so we can use it on the game page whether refreshed or not?
-    articleView.init = function() {
+    // COMMENT: Maybe sometime cache this selected article object in local storage so we can use it on the game page whether refreshed or not?
+    articleView.init = function () {
         let randArticleObj = app.articleController.randomArticle();
         // let headline = randArticleObj.title;
         // console.log(headline);
@@ -25,7 +25,7 @@ var app = app || {};
     };
 
     // TODO: listener for the click of the vote on the front
-    $('#submit-button').on('click', function(event){
+    $('#submit-button').on('click', function (event) {
         // take the randArticleObj and ...
         // change the property of shown to true
         // add properties of left, center-left, etc: 1 for the voted radio button and 0 for every other radio button
@@ -41,6 +41,8 @@ var app = app || {};
         if (selectedObj.hasOwnProperty(selection)) {
             selectedObj[selection] += 1;
         }
+        return selectedObj;
+
 
     });
 
