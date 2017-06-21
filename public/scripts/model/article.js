@@ -49,7 +49,7 @@ var app = app || {};
 			.filter(t => t.shown === false);
 		return Article.huffpo;
 	};
-
+// TODO: If this array is empty since all the articles have been shown, make the get request for this source again
 	Article.loadNytArticles = function() {
 		Article.nyt = nytArticles.all.map(obj => new Article(obj))
 			.reduce((titles, title) => {
