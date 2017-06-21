@@ -34,19 +34,7 @@ var app = app || {};
             .then(callback);
     };
     
-    Article.prototype.insertRecord = function (callback) {
-        $.post('/articles', {
-            title: this.title,
-            description: this.description,
-            url: this.url,
-            sourceId: this.source_id,
-            author: this.author,
-            urlToImage: this.url_to_image,
-            publishedAt: this.published_at
-        })
-            .then(console.log)
-            .then(callback);
-    };
+    
 
     // COMMENT: Do we need a deleteRecord method?
     // Article.prototype.deleteRecord = function(callback) {
@@ -57,5 +45,5 @@ var app = app || {};
     // COMMENT: Do we need an updateRecord method?
     // Article.prototype.updateRecord = function(callback) {}
 
-    module.Article = Article;
+    // module.Article = Article;
 }(app));

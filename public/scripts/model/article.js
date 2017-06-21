@@ -60,6 +60,20 @@ var app = app || {};
 		return Article.nyt;
 	};
 
+	Article.prototype.insertRecord = function (callback) {
+        $.post('/articles', {
+            title: this.title,
+            description: this.description,
+            url: this.url,
+            sourceId: this.sourceId,
+            author: this.author,
+            urlToImage: this.urlToImage,
+            publishedAt: this.publishedAt
+        })
+            .then(console.log(this.title))
+            .then(callback);
+    };
+
 	Article.selectRandom = function (array) {
 		let randomNum = Math.floor(Math.random() * (array.length));
 		return array[randomNum];

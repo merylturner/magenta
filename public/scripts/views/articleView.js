@@ -5,6 +5,13 @@ var app = app || {};
 (function (module) {
     const articleView = {};
     let selectedObj = {};
+    let sourceToId = {
+        'the-huffington-post' : 1,
+        'the-new-york-times' : 2,
+        'usa-today' :3,
+        'daily-mail': 4,
+        'breitbart-news' : 5
+    };
 
     const render = function (title) {
         let template = Handlebars.compile($('#template').text()); // eslint-disable-line
@@ -38,11 +45,13 @@ var app = app || {};
         selectedObj.voteCenter = 0;
         selectedObj.voteCenterRight = 0;
         selectedObj.voteRight = 0;
+
         if (selectedObj.hasOwnProperty(selection)) {
             selectedObj[selection] += 1;
         }
-        return selectedObj;
-
+        selectedObj.sourceId = sourceToId[selectedObj.source];
+        selectedObj.insertRecord();
+        // return selectedObj;
 
     });
 
