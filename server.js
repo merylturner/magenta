@@ -29,6 +29,10 @@ app.use(express.static('./public'));
 // 	}))(request, response);
 // }
 
+// TODO: switch out apiKey for environmental variable
+// TODO: switch out hardcoded sources for a variable so we can fill...
+// TODO: Refactor these get requests with a forEach over an array of the sources
+// TODO: Add in the three other source names
 app.get('/huffpo',(request,response) => {
 	superagent
 		.get('https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=8b0471f5a1944ee2af4d504c01289139')
