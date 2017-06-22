@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reflect</title>
+    <link href="styles/base.css" type="text/css" rel="stylesheet">
+    <link href="styles/layout.css" type="text/css" rel="stylesheet">
+    <link href="styles/modules.css" type="text/css" rel="stylesheet">
     <script id="template" type="text/x-handlebars-template">
         <p>{{title}}</p>
         <p>How would you rate the slant of this unknown news source based on the language of this article headline?</p>
     </script>
     <script id="results-template" type="text/x-handlebars-template">
-        <p>Results!</p>
-        <p>{{title}}</p>
-        <p>Your Vote: {{selection}}</p>
-        <p>Source: {{source}}</p>
-        <p>Left: {{voteLeft}}, Center Left: {{voteCenterLeft}}, Center: {{voteCenter}}, Center Right: {{voteCenterRight}}, Right: {{voteRight}}</p>
+        <h2>Results!</h2>
+        <h5>{{title}}</h5>
+        <p>You voted for: {{selection}}</p>
+        <p>This article headline is from: {{source}}</p>
+        <p><a href = "{{url}}"> Read Article Here</a></p>
+        <p>Left: {{voteLeft}}, Center Left: {{voteCenterLeft}}, Center: {{voteCenter}}, Center Right: {{voteCenterRight}}, Right:
+            {{voteRight}}</p>
     </script>
 </head>
 
@@ -42,10 +47,18 @@
                 <button id="submit-button">Submit</button>
             </form>
         </section>
-        <section id="results"></section>
+        <section id="canvas">
+            <canvas id="results-chart" width="500" height="500"></canvas>
+        </section>
+        <section id="results">
+        </section>
         <section id="results-options">
             <a href="/game"><button id="play-again-button">Play Again</button></a>
             <a href="/about"><button id="about-us-button">About</button></a>
+        </section>
+        <section id="divs">
+            <div class="blue hidden"></div>
+            <div class="red hidden"></div>
         </section>
         <section id="about">
             <p>About Us</p>
@@ -56,9 +69,11 @@
         </section>
 
     </main>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
 
     <script src="scripts/model/results.js" type="text/javascript"></script>
     <script src="scripts/model/article.js" type="text/javascript"></script>

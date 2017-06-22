@@ -5,7 +5,7 @@ var app = app || {};
 (function(module){
     const resultsController = {};
 
-    resultsController.addProperties = function() {
+    resultsController.addProperties = function(callback) {
         let resultsObj = app.Results.all.filter(obj => obj.id === app.selectedObj.sourceId)[0];
 
         app.selectedObj.voteLeft = resultsObj.count_left;
@@ -15,9 +15,20 @@ var app = app || {};
         app.selectedObj.voteRight = resultsObj.count_right;
 
         app.resultsView.init();
-
+        return resultsObj;
+        
     };
 
+    resultsController.showVoteColor = function () {
+        console.log(app.selectedObj);
+        if(app.selectedObj.voteLeft === 1) {
+            $('.blue').toggleClass('hidden');
+        }
+        else{
+            $('.red').toggleClass('hidden');
+        }
+    }
 
+    
     module.resultsController = resultsController;
 }(app));

@@ -32,10 +32,6 @@ var app = app || {};
 
     // TODO: listener for the click of the vote on the front
     $('#submit-button').on('click', function (event) {
-        // take the randArticleObj and ...
-        // change the property of shown to true
-        // add properties of left, center-left, etc: 1 for the voted radio button and 0 for every other radio button
-        // send the updated object to the database via the resultsController
         event.preventDefault();
         selectedObj.shown = true;
         let selection = $('input[type="radio"]:checked').val();
@@ -54,7 +50,7 @@ var app = app || {};
         module.selectedObj = selectedObj;
 
         app.Results.fetchAll(app.resultsController.addProperties);
-
+        app.resultsController.showVoteColor();
     });
 
     module.articleView = articleView;
