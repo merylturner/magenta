@@ -67,7 +67,7 @@ function loadDB() {
 		CREATE TABLE IF NOT EXISTS
 		sources (
 			id int PRIMARY KEY NOT NULL,
-			name varchar(50) NOT NULL,
+			name varchar(100) NOT NULL,
 			count_left int DEFAULT 0,
 			count_center_left int DEFAULT 0,
 			count_center int DEFAULT 0,
@@ -83,7 +83,7 @@ function loadDB() {
 			description varchar(255) NOT NULL,
 			url varchar(255) NOT NULL,
 			source_id int references sources(id) NOT NULL,
-			author varchar(50) NOT NULL,
+			author varchar(555) NOT NULL,
 			url_to_image varchar(255) NOT NULL,
 			published_at timestamp NOT NULL);`)
 		.catch(console.error);

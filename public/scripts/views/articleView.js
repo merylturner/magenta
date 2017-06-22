@@ -46,10 +46,9 @@ var app = app || {};
             selectedObj[selection] += 1;
         }
         selectedObj.sourceId = sourceToId[selectedObj.source];
-        selectedObj.insertRecord();
+        selectedObj.insertRecord(() => app.Results.fetchAll(app.resultsController.addProperties));
         module.selectedObj = selectedObj;
 
-        app.Results.fetchAll(app.resultsController.addProperties);
         app.resultsController.showVoteColor();
     });
 

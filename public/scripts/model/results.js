@@ -22,12 +22,15 @@ var app = app || {};
             })
             .then(Results.createChart);
     };
-
+    Results.pieChart = false;
 
     Results.createChart = function () {
         var canvas = $('#results-chart').get(0);
 
-        var pieChart = new Chart(canvas, {
+        if (Results.pieChart !== false) {
+          Results.pieChart.destroy();
+        }
+        Results.pieChart = new Chart(canvas, {
             type: 'doughnut',
             data: {
                 labels: ['Left', 'Center Left', 'Center', 'Center Right', 'Right'],
@@ -50,6 +53,6 @@ var app = app || {};
 
         });
     }
-    
+
     module.Results = Results;
 }(app));
