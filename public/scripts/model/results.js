@@ -10,7 +10,6 @@ var app = app || {};
     Results.all = [];
 
     Results.loadAll = rows => {
-        // rows.sort((a,b) => (new Date(b.publishedAt)) - (new Date(a.publishedAt)));
         Results.all = rows.map(obj => new Results(obj));
     };
 
@@ -20,31 +19,9 @@ var app = app || {};
             results => {
                 Results.loadAll(results);
                 callback();
-            }
-            )
+            })
             .then(Results.createChart);
     };
-
-    // COMMENT: Do we want to use this?
-    // Results.truncateTable = callback => {
-    //     $.ajax({
-    //         url: '/articles',
-    //         method: 'DELETE',
-    //     })
-    //         .then(console.log)
-    //         .then(callback);
-    // };
-
-
-
-    // COMMENT: Do we need a deleteRecord method?
-    // Results.prototype.deleteRecord = function(callback) {
-    //     $.ajax({
-    //         url: ''
-    //     })
-    // }
-    // COMMENT: Do we need an updateRecord method?
-    // Results.prototype.updateRecord = function(callback) {}
 
 
     Results.createChart = function () {
@@ -73,10 +50,6 @@ var app = app || {};
 
         });
     }
-
-
-
-
-
+    
     module.Results = Results;
 }(app));

@@ -6,7 +6,6 @@ var app = app || {};
     const aboutController = {};
 
 
-    
 
 
     module.aboutController = aboutController;
