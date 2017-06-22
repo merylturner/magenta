@@ -16,7 +16,6 @@ var app = app || {};
         $('#results').show();
 
         $('#results').append(render(app.selectedObj));
-        // $('#results').append();
         $('#results-options').show();
         return app.selectedObj;
     };

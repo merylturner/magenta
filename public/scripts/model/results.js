@@ -21,7 +21,8 @@ var app = app || {};
                 Results.loadAll(results);
                 callback();
             }
-            );
+            )
+            .then(Results.createChart);
     };
 
     // COMMENT: Do we want to use this?
@@ -45,30 +46,33 @@ var app = app || {};
     // COMMENT: Do we need an updateRecord method?
     // Results.prototype.updateRecord = function(callback) {}
 
-    var canvas = $('#results-chart');
-    console.log(app.resultsObj);
-    var pieChart = new Chart(canvas, {
-        type: 'doughnut',
-        data: {
-            labels: ['Left','Center Left', 'Center', 'Center Right', 'Right'],
-            datasets: [{
-                label: 'User Votes',
-                data: [1,2,3,4,5],
-                backgroundColor: ['#0e51a7','#6997d3','#ad66d5','#ff7d73','#ff1300']
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Most Popular Items'
+
+    Results.createChart = function () {
+        var canvas = $('#results-chart');
+
+        var pieChart = new Chart(canvas, {
+            type: 'doughnut',
+            data: {
+                labels: ['Left', 'Center Left', 'Center', 'Center Right', 'Right'],
+                datasets: [{
+                    label: 'User Votes',
+                    data: [app.selectedObj.voteLeft,app.selectedObj.voteCenterLeft, app.selectedObj.voteCenter, app.selectedObj.voteCenterRight, app.selectedObj.voteRight],
+                    backgroundColor: ['#0e51a7', '#6997d3', '#ad66d5', '#ff7d73', '#ff1300']
+                }]
             },
-            responsive: false,
-            maintainAspectRatio: true,
-        }
+            options: {
+                title: {
+                    display: true,
+                    text: 'Results'
+                },
+                responsive: false,
+                maintainAspectRatio: true,
+            }
 
 
 
-});
+        });
+    }
 
 
 
