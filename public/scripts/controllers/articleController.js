@@ -9,7 +9,6 @@ var app = app || {};
 		let nytArticle = app.Article.selectRandom(app.Article.loadNytArticles());
 		let huffpoArticle = app.Article.selectRandom(app.Article.loadHuffpoArticles());
 		let consolidatedArray = [huffpoArticle, nytArticle];
-		console.log(consolidatedArray);
 		return app.Article.selectRandom(consolidatedArray);
 	};
 

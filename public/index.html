@@ -10,7 +10,13 @@
         <p>{{title}}</p>
         <p>How would you rate the slant of this unknown news source based on the language of this article headline?</p>
     </script>
-
+    <script id="results-template" type="text/x-handlebars-template">
+        <p>Results!</p>
+        <p>{{title}}</p>
+        <p>Your Vote: {{selection}}</p>
+        <p>Source: {{source}}</p>
+        <p>Left: {{voteLeft}}, Center Left: {{voteCenterLeft}}, Center: {{voteCenter}}, Center Right: {{voteCenterRight}}, Right: {{voteRight}}</p>
+    </script>
 </head>
 
 <body>
@@ -30,6 +36,7 @@
                 <button id="submit-button">Submit</button>
             </form>
         </section>
+        <section id ="results"></section>
 
 
     </main>

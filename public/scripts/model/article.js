@@ -62,22 +62,21 @@ var app = app || {};
 
 	Article.prototype.insertRecord = function (callback) {
         $.post('/articles', {
-            title: this.title,
-            description: this.description,
-            url: this.url,
-            sourceId: this.sourceId,
-            author: this.author,
-            urlToImage: this.urlToImage,
-            publishedAt: this.publishedAt,
-						voteLeft: this.voteLeft,
-						voteCenterLeft: this.voteCenterLeft,
-						voteCenter: this.voteCenter,
-						voteCenterRight: this.voteCenterRight,
-						voteRight: this.voteRight
+			title: this.title,
+			description: this.description,
+			url: this.url,
+			sourceId: this.sourceId,
+			author: this.author,
+			urlToImage: this.urlToImage,
+			publishedAt: this.publishedAt,
+			voteLeft: this.voteLeft,
+			voteCenterLeft: this.voteCenterLeft,
+			voteCenter: this.voteCenter,
+			voteCenterRight: this.voteCenterRight,
+			voteRight: this.voteRight
 
-        })
-            .then(console.log(this.title))
-            .then(callback);
+		})
+			.then(callback);
     };
 
 	Article.selectRandom = function (array) {

@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const conString = 'postgres://postgres:dada1@localhost:5432/magenta';
+const conString = 'postgres://localhost:5432/magenta';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
@@ -64,9 +64,9 @@ app.post('/articles', (request, response) => {
 
 		})
 
-		.then ( ()=> {
+		.then(() => {
 
-			client.query (`
+			client.query(`
 
 			UPDATE sources SET
 			count_left = count_left + $1,
@@ -75,14 +75,14 @@ app.post('/articles', (request, response) => {
 			count_center_right =count_center_right + $4,
 			count_right =count_right + $5
 			WHERE id = $6`,
-			[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight, request.body.voteRight, request.body.sourceId],
+				[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight, request.body.voteRight, request.body.sourceId],
 
-			function (err) {
-				if (err) console.error(err);
-				response.send('update complete');
-			})
+				function (err) {
+					if (err) console.error(err);
+					response.send('update complete');
+				});
 		});
- });
+});
 
 function loadDB() {
 	client.query(`
@@ -122,11 +122,22 @@ function loadSourceData() {
 		ON CONFLICT DO NOTHING;`);
 }
 
-
-
-// function updateSourceData() {
-// 	//take input from user and increment the source's vote column data
-// }
+app.get('/sources', function(request,response){
+	client.query(`SELECT * FROM sources;`)
+	.then(result => {
+		response.send(result.rows);
+	})
+	.catch(err => console.error(err));
+});
+// app.get('/sources', function (request, response) {
+// 	client.query(`SELECT * FROM sources
+// 		WHERE id = $1,
+// 		[request.body.sourceId];`)
+// 		.then(result => {
+// 			response.send(result.rows);
+// 		})
+// 		.catch(err => console.error(err));
+// });
 
 
 app.listen(PORT, function () {

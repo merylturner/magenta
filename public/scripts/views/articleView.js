@@ -28,7 +28,6 @@ var app = app || {};
         // $('#headline').show();
         $('#headline').append(render(randArticleObj));
         selectedObj = randArticleObj;
-        console.log('random article object inside articleView.init', selectedObj);
     };
 
     // TODO: listener for the click of the vote on the front
@@ -40,6 +39,7 @@ var app = app || {};
         event.preventDefault();
         selectedObj.shown = true;
         let selection = $('input[type="radio"]:checked').val();
+        selectedObj.selection = selection;
         selectedObj.voteLeft = 0;
         selectedObj.voteCenterLeft = 0;
         selectedObj.voteCenter = 0;
@@ -51,7 +51,9 @@ var app = app || {};
         }
         selectedObj.sourceId = sourceToId[selectedObj.source];
         selectedObj.insertRecord();
-        // return selectedObj;
+        module.selectedObj = selectedObj;
+
+        app.Results.fetchAll(app.resultsController.addProperties);
 
     });
 

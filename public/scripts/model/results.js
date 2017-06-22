@@ -3,47 +3,47 @@
 var app = app || {};
 
 (function(module){
-    function Article(sourceData) {
-        Object.keys(sourceData).forEach( key => this[key] = sourceData[key] );
+    function Results(resultsData) {
+        Object.keys(resultsData).forEach( key => this[key] = resultsData[key] );
     }
 
-    Article.all = [];
+    Results.all = [];
 
-    Article.loadAll = rows => {
-        rows.sort((a,b) => (new Date(b.publishedAt)) - (new Date(a.publishedAt)));
-        Article.all = rows.map(obj => new Article(obj));
+    Results.loadAll = rows => {
+        // rows.sort((a,b) => (new Date(b.publishedAt)) - (new Date(a.publishedAt)));
+        Results.all = rows.map(obj => new Results(obj));
     };
 
-    Article.fetchAll = callback => {
-        $.get('/articles')
+    Results.fetchAll = callback => {
+        $.get('/sources')
         .then(
             results => {
-                Article.loadAll(results);
+                Results.loadAll(results);
                 callback();
             }
         );
     };
 
     // COMMENT: Do we want to use this?
-    Article.truncateTable = callback => {
-        $.ajax({
-            url: '/articles',
-            method: 'DELETE',
-        })
-            .then(console.log)
-            .then(callback);
-    };
+    // Results.truncateTable = callback => {
+    //     $.ajax({
+    //         url: '/articles',
+    //         method: 'DELETE',
+    //     })
+    //         .then(console.log)
+    //         .then(callback);
+    // };
     
     
 
     // COMMENT: Do we need a deleteRecord method?
-    // Article.prototype.deleteRecord = function(callback) {
+    // Results.prototype.deleteRecord = function(callback) {
     //     $.ajax({
     //         url: ''
     //     })
     // }
     // COMMENT: Do we need an updateRecord method?
-    // Article.prototype.updateRecord = function(callback) {}
+    // Results.prototype.updateRecord = function(callback) {}
 
-    // module.Article = Article;
+    module.Results = Results;
 }(app));
