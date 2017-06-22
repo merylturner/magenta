@@ -11,7 +11,7 @@ var app = app || {};
 
 
 	huffpoArticles.requestArticles = function (callback) {
-		$.get('/huffpo')
+		$.get(`/the-huffington-post`)
 			.then(data => {
 				huffpoArticles.all = (JSON.parse(data).articles);
 				huffpoArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
@@ -22,7 +22,7 @@ var app = app || {};
 	};
 
 	nytArticles.requestArticles = function (callback) {
-		$.get('/nyt')
+		$.get(`/the-new-york-times`)
 			.then(data => {
 				nytArticles.all = (JSON.parse(data).articles);
 				nytArticles.all.forEach(obj => obj.source = JSON.parse(data).source);

@@ -25,19 +25,29 @@ loadDB();
 // TODO: Refactor these get requests with a forEach over an array of the sources
 // TODO: Add in the three other source names
 
-var sourcesArray = [`the-new-york-times`,`the-huffington-post`,`usa-today`,`daily-mail`,`breitbart-news`];
+// var sourcesArray = [`the-new-york-times`,`the-huffington-post`,`usa-today`,`daily-mail`,`breitbart-news`];
+var sourcesArray = [`the-new-york-times`,`the-huffington-post`];
 
-app.get('/huffpo', (request, response) => {
-	superagent
-		.get(`https://newsapi.org/v1/articles?source=${sourcesArray[1]}&sortBy=top&apiKey=${process.env.API_KEY}`)
-		.end((err, superagentResponse) => response.send(superagentResponse.text));
+sourcesArray.forEach((source) => {
+	app.get(`/${source}`, (request, response) => {
+		superagent
+			.get(`https://newsapi.org/v1/articles?source=${source}&sortBy=top&apiKey=${process.env.API_KEY}`)
+			.end((err, superagentResponse) => response.send(superagentResponse.text));
+	});
+
 });
 
-app.get('/nyt', (request, response) => {
-	superagent
-		.get(`https://newsapi.org/v1/articles?source=${sourcesArray[0]}&sortBy=top&apiKey=${process.env.API_KEY}`)
-		.end((err, superagentResponse) => response.send(superagentResponse.text));
-});
+// app.get(`/${sourcesArray[1]}`, (request, response) => {
+// 	superagent
+// 		.get(`https://newsapi.org/v1/articles?source=${sourcesArray[1]}&sortBy=top&apiKey=${process.env.API_KEY}`)
+// 		.end((err, superagentResponse) => response.send(superagentResponse.text));
+// });
+
+// app.get(`/${sourcesArray[0]}`, (request, response) => {
+// 	superagent
+// 		.get(`https://newsapi.org/v1/articles?source=${sourcesArray[0]}&sortBy=top&apiKey=${process.env.API_KEY}`)
+// 		.end((err, superagentResponse) => response.send(superagentResponse.text));
+// });
 
 //TODO: queries of headline data/votes to the database
 app.post('/articles', (request, response) => {
