@@ -13,9 +13,10 @@ var app = app || {};
 
     resultsView.init = function () {
         $('main > section').hide();
-        $('#results').show();
+        $('#results').empty().show();
 
         $('#results').append(render(app.selectedObj));
+        $('#results-options').show();
         return app.selectedObj;
     };
 
