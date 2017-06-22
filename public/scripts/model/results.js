@@ -48,7 +48,7 @@ var app = app || {};
 
 
     Results.createChart = function () {
-        var canvas = $('#results-chart');
+        var canvas = $('#results-chart').get(0);
 
         var pieChart = new Chart(canvas, {
             type: 'doughnut',
