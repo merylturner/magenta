@@ -6,11 +6,11 @@ var app = app || {};
     const articleView = {};
     let selectedObj = {};
     let sourceToId = {
-        'the-huffington-post' : 1,
-        'the-new-york-times' : 2,
-        'usa-today' :3,
+        'the-huffington-post': 1,
+        'the-new-york-times': 2,
+        'usa-today': 3,
         'daily-mail': 4,
-        'breitbart-news' : 5
+        'breitbart-news': 5
     };
 
     const render = function (title) {

@@ -3,9 +3,7 @@
 const superagent = require('superagent');
 require('dotenv').config();
 const pg = require('pg');
-const fs = require('fs');
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -15,27 +13,26 @@ const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
+app.get('/game', (request, response) => response.sendFile('index.html', { root: './public' }));
+app.get('/about', (request, response) => response.sendFile('index.html', { root: './public' }));
 
 loadDB();
 
-var sourcesArray = [`the-new-york-times`,`the-huffington-post`,`usa-today`,`daily-mail`,`breitbart-news`];
+var sourcesArray = ['the-new-york-times', 'the-huffington-post', 'usa-today', 'daily-mail', 'breitbart-news'];
 
 sourcesArray.forEach((source) => {
-	app.get(`/${source}`, (request, response) => {
-		superagent
+    app.get(`/${source}`, (request, response) => {
+        superagent
 			.get(`https://newsapi.org/v1/articles?source=${source}&sortBy=top&apiKey=${process.env.API_KEY}`)
 			.end((err, superagentResponse) => response.send(superagentResponse.text));
-	});
-
+    });
 });
 
-//TODO: queries of headline data/votes to the database
+
 app.post('/articles', (request, response) => {
-	client.query(`
+    client.query(`
 		INSERT INTO
 		articles(title, description, url, source_id, author, url_to_image, published_at)
 		VALUES($1, $2, $3, $4, $5, $6, $7)
@@ -44,15 +41,10 @@ app.post('/articles', (request, response) => {
 		[request.body.title, request.body.description, request.body.url, request.body.sourceId, request.body.author, request.body.urlToImage, request.body.publishedAt],
 
 		function (err) {
-			if (err) console.error(err);
-			// response.send('insert complete');
-
-		})
-
+    if (err) console.error(err);
+})
 		.then(() => {
-
-			client.query(`
-
+    client.query(`
 			UPDATE sources SET
 			count_left = count_left + $1,
 			count_center_left =count_center_left + $2,
@@ -63,14 +55,14 @@ app.post('/articles', (request, response) => {
 				[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight, request.body.voteRight, request.body.sourceId],
 
 				function (err) {
-					if (err) console.error(err);
-					response.send('update complete');
-				});
-		});
+    if (err) console.error(err);
+    response.send('update complete');
+});
+});
 });
 
 function loadDB() {
-	client.query(`
+    client.query(`
 		CREATE TABLE IF NOT EXISTS
 		sources (
 			id int PRIMARY KEY NOT NULL,
@@ -83,7 +75,7 @@ function loadDB() {
 		.then(loadSourceData)
 		.catch(console.error);
 
-	client.query(`
+    client.query(`
 		CREATE TABLE IF NOT EXISTS
 		articles (
 			title varchar(255) PRIMARY KEY NOT NULL,
@@ -97,7 +89,7 @@ function loadDB() {
 }
 
 function loadSourceData() {
-	client.query(`
+    client.query(`
 		INSERT INTO sources VALUES
 		(1, 'the-huffington-post',0,0,0,0,0),
 		(2, 'the-new-york-times',0,0,0,0,0),
@@ -107,24 +99,19 @@ function loadSourceData() {
 		ON CONFLICT DO NOTHING;`);
 }
 
-app.get('/sources', function(request,response){
-	client.query(`SELECT * FROM sources;`)
-	.then(result => {
-		response.send(result.rows);
-	})
-	.catch(err => console.error(err));
+app.get('/sources', function (request, response) {
+    client.query('SELECT * FROM sources;')
+		.then(result => {
+    response.send(result.rows);
+})
+		.catch(err => console.error(err));
 });
-// app.get('/sources', function (request, response) {
-// 	client.query(`SELECT * FROM sources
-// 		WHERE id = $1,
-// 		[request.body.sourceId];`)
-// 		.then(result => {
-// 			response.send(result.rows);
-// 		})
-// 		.catch(err => console.error(err));
-// });
+
+
+
+app.get('*', (request, response) => response.sendFile('index.html', { root: './public' }));
 
 
 app.listen(PORT, function () {
-	console.log('Your port is running on:', PORT);
+    console.log('Your port is running on:', PORT);
 });
