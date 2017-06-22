@@ -38,7 +38,7 @@ var app = app || {};
 
 	Article.huffpo = [];
 	Article.nyt = [];
-	
+
 
 	Article.loadHuffpoArticles = function() {
 		Article.huffpo = huffpoArticles.all.map(obj => new Article(obj))
@@ -59,6 +59,25 @@ var app = app || {};
 			.filter(t => t.shown === false);
 		return Article.nyt;
 	};
+
+	Article.prototype.insertRecord = function (callback) {
+        $.post('/articles', {
+			title: this.title,
+			description: this.description,
+			url: this.url,
+			sourceId: this.sourceId,
+			author: this.author,
+			urlToImage: this.urlToImage,
+			publishedAt: this.publishedAt,
+			voteLeft: this.voteLeft,
+			voteCenterLeft: this.voteCenterLeft,
+			voteCenter: this.voteCenter,
+			voteCenterRight: this.voteCenterRight,
+			voteRight: this.voteRight
+
+		})
+			.then(callback);
+    };
 
 	Article.selectRandom = function (array) {
 		let randomNum = Math.floor(Math.random() * (array.length));
