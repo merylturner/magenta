@@ -12,10 +12,13 @@ var app = app || {};
 		return app.Article.selectRandom(consolidatedArray);
 	};
 
-	// COMMENT: stretch goal: filtering by source or something else?
-	// sourceArticles.with = attr => sourceArticles.all.filter( sourceArticle => sourceArticle[attr]);
-	app.nytArticles.requestArticles();
-	app.huffpoArticles.requestArticles(app.articleView.init);
+	articleController.init = function(ctx, next) {
+		console.log('inside articleController.init');
+		app.nytArticles.requestArticles(app.articleView.init);
+		app.huffpoArticles.requestArticles(app.articleView.init);
+		// next(ctx);
+	};
+
 
 
 	module.articleController = articleController;

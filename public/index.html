@@ -21,12 +21,18 @@
 
 <body>
     <main>
+        <section id="home">
+            <p>This is the home page</p>
+            <p>description text</p>
+            <a href="/game"><button id="play-button">Play</button></a>
+
+        </section>
         <section id="headline"></section>
         <section>
             <p></p>
         </section>
         <!--TODO: Make the slider that takes the user input. Five buttons for now; maybe switch to slider with values 1-5 later-->
-        <section>
+        <section id="vote">
             <form>
                 <input type="radio" name="vote" value="voteLeft">Left
                 <input type="radio" name="vote" value="voteCenterLeft">Center Left
@@ -36,8 +42,18 @@
                 <button id="submit-button">Submit</button>
             </form>
         </section>
-        <section id ="results"></section>
+        <section id="results"></section>
+        <section id="results-options">
+            <a href="/game"><button id="play-again-button">Play Again</button></a>
+            <a href="/about"><button id="about-us-button">About</button></a>
+        </section>
+        <section id="about">
+            <p>About Us</p>
+            <a href="/">
+                <button id="home-button">Home</button>
+            </a>
 
+        </section>
 
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -47,11 +63,14 @@
     <script src="scripts/model/results.js" type="text/javascript"></script>
     <script src="scripts/model/article.js" type="text/javascript"></script>
 
+    <script src="scripts/views/homeView.js" type="text/javascript"></script>
     <script src="scripts/views/resultsView.js" type="text/javascript"></script>
     <script src="scripts/views/articleView.js" type="text/javascript"></script>
+    <script src="scripts/views/aboutView.js" type="text/javascript"></script>
 
     <script src="scripts/controllers/articleController.js" type="text/javascript"></script>
     <script src="scripts/controllers/resultsController.js" type="text/javascript"></script>
+    <script src="scripts/controllers/aboutController.js" type="text/javascript"></script>
     <script src="scripts/controllers/routes.js" type="text/javascript"></script>
 </body>
 
