@@ -25,17 +25,17 @@ loadDB();
 // TODO: Refactor these get requests with a forEach over an array of the sources
 // TODO: Add in the three other source names
 
-
+var sourcesArray = [`the-new-york-times`,`the-huffington-post`,`usa-today`,`daily-mail`,`breitbart-news`];
 
 app.get('/huffpo', (request, response) => {
 	superagent
-		.get(`https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=${process.env.API_KEY}`)
+		.get(`https://newsapi.org/v1/articles?source=${sourcesArray[1]}&sortBy=top&apiKey=${process.env.API_KEY}`)
 		.end((err, superagentResponse) => response.send(superagentResponse.text));
 });
 
 app.get('/nyt', (request, response) => {
 	superagent
-		.get(`https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=${process.env.API_KEY}`)
+		.get(`https://newsapi.org/v1/articles?source=${sourcesArray[0]}&sortBy=top&apiKey=${process.env.API_KEY}`)
 		.end((err, superagentResponse) => response.send(superagentResponse.text));
 });
 
