@@ -20,6 +20,7 @@ var app = app || {};
     };
 
     // COMMENT: Maybe sometime cache this selected article object in local storage so we can use it on the game page whether refreshed or not?
+
     articleView.init = function () {
         let randArticleObj = app.articleController.randomArticle();
         $('main > section').hide();
