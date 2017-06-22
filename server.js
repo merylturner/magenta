@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const conString = 'postgres://localhost:5432/magenta';
+const conString = 'postgres://merylturner@localhost:5432/magenta';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));

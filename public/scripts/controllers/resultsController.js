@@ -15,7 +15,8 @@ var app = app || {};
         app.selectedObj.voteRight = resultsObj.count_right;
 
         app.resultsView.init();
-
+        return resultsObj;
+        
     };
 
 
