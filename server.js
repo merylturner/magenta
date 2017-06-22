@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const conString = 'postgres://merylturner@localhost:5432/magenta';
+const conString = 'postgres://postgres:dada1@localhost:5432/magenta';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
@@ -51,7 +51,7 @@ app.get('/nyt', (request, response) => {
 //TODO: queries of headline data/votes to the database
 app.post('/articles', (request, response) => {
 	client.query(`
-		INSERT INTO 
+		INSERT INTO
 		articles(title, description, url, source_id, author, url_to_image, published_at)
 		VALUES($1, $2, $3, $4, $5, $6, $7)
 		ON CONFLICT DO NOTHING`,
@@ -60,14 +60,29 @@ app.post('/articles', (request, response) => {
 
 		function (err) {
 			if (err) console.error(err);
-			response.send('insert complete');
+			// response.send('insert complete');
 
-		}
-	);
+		})
 
+		.then ( ()=> {
 
-});
+			client.query (`
 
+			UPDATE sources SET
+			count_left = count_left + $1,
+			count_center_left =count_center_left + $2,
+			count_center =count_center + $3,
+			count_center_right =count_center_right + $4,
+			count_right =count_right + $5
+			WHERE id = $6`,
+			[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight, request.body.voteRight, request.body.sourceId],
+
+			function (err) {
+				if (err) console.error(err);
+				response.send('update complete');
+			})
+		});
+ });
 
 function loadDB() {
 	client.query(`
@@ -101,8 +116,8 @@ function loadSourceData() {
 		INSERT INTO sources VALUES
 		(1, 'the-huffington-post',0,0,0,0,0),
 		(2, 'the-new-york-times',0,0,0,0,0),
-		(3, 'usa-today',0,0,0,0,0), 
-		(4, 'daily-mail',0,0,0,0,0), 
+		(3, 'usa-today',0,0,0,0,0),
+		(4, 'daily-mail',0,0,0,0,0),
 		(5, 'breitbart-news',0,0,0,0,0)
 		ON CONFLICT DO NOTHING;`);
 }

@@ -38,7 +38,7 @@ var app = app || {};
 
 	Article.huffpo = [];
 	Article.nyt = [];
-	
+
 
 	Article.loadHuffpoArticles = function() {
 		Article.huffpo = huffpoArticles.all.map(obj => new Article(obj))
@@ -68,7 +68,13 @@ var app = app || {};
             sourceId: this.sourceId,
             author: this.author,
             urlToImage: this.urlToImage,
-            publishedAt: this.publishedAt
+            publishedAt: this.publishedAt,
+						voteLeft: this.voteLeft,
+						voteCenterLeft: this.voteCenterLeft,
+						voteCenter: this.voteCenter,
+						voteCenterRight: this.voteCenterRight,
+						voteRight: this.voteRight
+
         })
             .then(console.log(this.title))
             .then(callback);
