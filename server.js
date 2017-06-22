@@ -21,21 +21,21 @@ app.use(express.static('./public'));
 
 
 loadDB();
-// TODO: switch out apiKey for environmental variable
 // TODO: switch out hardcoded sources for a variable so we can fill...
 // TODO: Refactor these get requests with a forEach over an array of the sources
 // TODO: Add in the three other source names
+
+
+
 app.get('/huffpo', (request, response) => {
-	console.log('gethuffpost');
 	superagent
-		.get('https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=8b0471f5a1944ee2af4d504c01289139')
+		.get(`https://newsapi.org/v1/articles?source=the-huffington-post&sortBy=top&apiKey=${process.env.API_KEY}`)
 		.end((err, superagentResponse) => response.send(superagentResponse.text));
 });
 
 app.get('/nyt', (request, response) => {
-	console.log('getNYT');
 	superagent
-		.get('https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=8b0471f5a1944ee2af4d504c01289139')
+		.get(`https://newsapi.org/v1/articles?source=the-new-york-times&sortBy=top&apiKey=${process.env.API_KEY}`)
 		.end((err, superagentResponse) => response.send(superagentResponse.text));
 });
 
