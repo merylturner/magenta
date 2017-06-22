@@ -85,7 +85,7 @@ function loadDB() {
 			source_id int references sources(id) NOT NULL,
 			author varchar(555) NOT NULL,
 			url_to_image varchar(255) NOT NULL,
-			published_at timestamp NOT NULL);`)
+			published_at timestamp);`)
 		.catch(console.error);
 }
 
