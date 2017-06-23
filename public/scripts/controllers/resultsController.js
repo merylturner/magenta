@@ -5,7 +5,7 @@ var app = app || {};
 (function(module){
     const resultsController = {};
 
-    resultsController.addProperties = function(callback) {
+    resultsController.addProperties = function() {
         let resultsObj = app.Results.all.filter(obj => obj.id === app.selectedObj.sourceId)[0];
 
         app.selectedObj.voteLeft = resultsObj.count_left;
@@ -28,7 +28,6 @@ var app = app || {};
         if (app.selectedObj.source === 'daily-mail') app.selectedObj.sourceToDisplay = 'Daily Mail'
         if (app.selectedObj.source === 'usa-today') app.selectedObj.sourceToDisplay = 'USA Today'
         if (app.selectedObj.source === 'breitbart-news') app.selectedObj.sourceToDisplay = 'Breitbart News'
-        
 
         app.resultsView.init();
         return resultsObj;
