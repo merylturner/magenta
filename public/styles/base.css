@@ -1,0 +1,72 @@
+body {
+        margin: 0;
+        float: none;
+        width: auto;
+        height: 100%;
+}
+
+html {
+    margin: 0;
+}
+
+main {
+    text-align: center;
+    width: 100vw;
+    margin: 5% auto;
+    height: 80vh;
+}
+
+footer {
+    width: 100vw;
+    text-align: center;
+    display: block;
+}
+
+br {
+    line-height: 100px;
+}
+button {
+    background-color: black;
+    color:white;
+    margin-top: 10%;
+}
+
+canvas {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/*FONTS - desktop
+=======================================*/
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 8rem;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    margin: 2% 2%;
+}
+
+form {
+    margin: 10% 2%;
+}
+
+form label {
+    display: inline;
+    /*width:80%;*/
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 5% 2%;
+
+}
