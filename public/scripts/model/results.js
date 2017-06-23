@@ -28,7 +28,7 @@ var app = app || {};
         var canvas = $('#results-chart').get(0);
 
         if (Results.pieChart !== false) {
-          Results.pieChart.destroy();
+            Results.pieChart.destroy();
         }
         Results.pieChart = new Chart(canvas, {
             type: 'doughnut',
@@ -36,22 +36,20 @@ var app = app || {};
                 labels: ['Left', 'Center Left', 'Center', 'Center Right', 'Right'],
                 datasets: [{
                     label: 'User Votes',
-                    data: [app.selectedObj.voteLeft,app.selectedObj.voteCenterLeft, app.selectedObj.voteCenter, app.selectedObj.voteCenterRight, app.selectedObj.voteRight],
+                    data: [app.selectedObj.voteLeft, app.selectedObj.voteCenterLeft, app.selectedObj.voteCenter, app.selectedObj.voteCenterRight, app.selectedObj.voteRight],
                     backgroundColor: ['#0e51a7', '#6997d3', '#ad66d5', '#ff7d73', '#ff1300']
                 }]
             },
             options: {
                 title: {
                     display: true,
-                    text: `People think headlines from ${app.selectedObj.source} are considered`,
+                    text: `People think headlines from ${app.selectedObj.source} are...`,
                     fontSize: 20
 
                 },
                 responsive: false,
                 maintainAspectRatio: true,
             }
-
-
 
         });
     }
