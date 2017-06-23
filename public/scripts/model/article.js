@@ -92,22 +92,22 @@ var app = app || {};
     breitArticles.all = [];
 
 
-	var sourcesArray = [`the-new-york-times`,`the-huffington-post`,`usa-today`,`daily-mail`,`breitbart-news`];
+    var sourcesArray = [`the-new-york-times`, `the-huffington-post`, `usa-today`, `daily-mail`, `breitbart-news`];
 
-	Article.requestArticles = sourcesArray.forEach( (source) => {
-		(callback) => {
-			$.get(`/${source}`)
-			.then(data => {
-				huffpoArticles.all = (JSON.parse(data).articles);
-				huffpoArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
-				huffpoArticles.all.forEach(obj => obj.shown = false);
-			}, err => console.error(err))
-			.then(Article.loadArticles)
-			.then(callback);
+    Article.requestArticles = sourcesArray.forEach((source) => {
+        (callback) => {
+            $.get(`/${source}`)
+				.then(data => {
+    huffpoArticles.all = (JSON.parse(data).articles);
+    huffpoArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
+    huffpoArticles.all.forEach(obj => obj.shown = false);
+}, err => console.error(err))
+				.then(Article.loadArticles)
+				.then(callback);
 
-		};
+        };
 
-	});
+    });
 
 
     huffpoArticles.requestArticles = function (callback) {
@@ -122,16 +122,16 @@ var app = app || {};
     };
 
     nytArticles.requestArticles = function (callback) {
-      if (nytArticles.all.length === 0) {
-        $.get(`/the-new-york-times`)
-      .then(data => {
+        if (nytArticles.all.length === 0) {
+            $.get(`/the-new-york-times`)
+				.then(data => {
     nytArticles.all = (JSON.parse(data).articles);
     nytArticles.all.forEach(obj => obj.source = JSON.parse(data).source);
     nytArticles.all.forEach(obj => obj.shown = false);
-  }, err => console.error(err))
-      .then(Article.loadNytArticles)
-      .then(callback);
-      }
+}, err => console.error(err))
+				.then(Article.loadNytArticles)
+				.then(callback);
+        }
 
     };
 
