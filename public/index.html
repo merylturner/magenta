@@ -19,6 +19,7 @@
         <br/>
         <h2 id="article-headline">" {{title}} "</h2>
     </script>
+
     <script id="results-template" type="text/x-handlebars-template">
         <h5>"{{title}}"</h5>
         <br/>
@@ -26,12 +27,10 @@
         <br/>
         <h2 id="article-source">{{sourceToDisplay}}</h2>
         <p><a href="{{url}}"> Read Article Here</a></p>
-
         <p>You voted for: {{selectionToDisplay}}</p>
         <div id="{{selection}}"></div>
         <br/>
         <p id="see-chart">Now see the chart to see how your vote compares to your peers!</p>
-
     </script>
 </head>
 
@@ -50,7 +49,6 @@
                 <br/>
                 <div>
                     <a href="/" class="see-instructions">Here's how the game works &rarr;</a>
-                    
                     <div class="instructions">
                         <p>1. When you start the game, we will show you a headline without showing you the source, and YOU decide
                             where you think that headline's source falls on the political spectrum.</p>
@@ -60,8 +58,8 @@
                     </div>
                 </div>
                 <a href="/game"><button id="play-button">PLAY</button></a>
-
         </section>
+
         <section id="headline"></section>
 
         <section id="political-icons">
@@ -69,6 +67,7 @@
             <img src="imgs/elephant.svg" width="50" height="50" id="elephant" />
             <hr id="rule">
         </section>
+
         <section id="vote">
             <form>
                 <label><input class="radio" type="radio" name="vote" value="voteLeft">Left
@@ -129,10 +128,11 @@
             <a href="/"><button id="home-button">HOME</button></a>
         </section>
     </main>
+    
     <footer>
         <p>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> | &copy;2017 Team Magenta</p>
-
     </footer>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>

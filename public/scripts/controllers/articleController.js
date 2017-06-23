@@ -23,20 +23,5 @@ var app = app || {};
         app.breitArticles.requestArticles(app.articleView.init);
     };
 
-
-
-
-	// articleController.randomArticle = function () {
-	//   console.log('inside random article');
-	//     return app.Article.selectRandom(app.Article.loadArticles('randomArticle'));
-	// };
-	//
-	// articleController.init = function () {
-	//     console.log('inside articleController.init');
-	//     app.Article.requestArticles(app.articleView.init);
-	// };
-
-
-
     module.articleController = articleController;
 }(app));

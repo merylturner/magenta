@@ -43,9 +43,8 @@ var app = app || {};
             options: {
                 title: {
                     display: true,
-                    text: `People think headlines from ${app.selectedObj.source} are...`,
+                    text: `People think headlines from ${app.selectedObj.sourceToDisplay} are...`,
                     fontSize: 20
-
                 },
                 responsive: false,
                 maintainAspectRatio: true,

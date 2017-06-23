@@ -31,7 +31,6 @@ var app = app || {};
 
         app.resultsView.init();
         return resultsObj;
-
     };
 
 

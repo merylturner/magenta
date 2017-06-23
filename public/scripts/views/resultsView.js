@@ -23,8 +23,5 @@ var app = app || {};
         return app.selectedObj;
     };
 
-
-
-
     module.resultsView = resultsView;
 }(app));
