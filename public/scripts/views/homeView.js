@@ -13,10 +13,9 @@ var app = app || {};
         homeView.showTeasers();
     };
 
-
     homeView.showTeasers = function () {
         $('.instructions').hide();
-        
+
         $('.see-instructions').on('click', function () {
             event.preventDefault();
             $(this).toggleClass('hidden');

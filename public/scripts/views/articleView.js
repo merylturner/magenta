@@ -19,8 +19,6 @@ var app = app || {};
         return template(title);
     };
 
-    // COMMENT: Maybe sometime cache this selected article object in local storage so we can use it on the game page whether refreshed or not?
-
     articleView.init = function () {
         let randArticleObj = app.articleController.randomArticle();
         $('main > section').hide();
@@ -33,7 +31,6 @@ var app = app || {};
         selectedObj = randArticleObj;
     };
 
-    // TODO: listener for the click of the vote on the front
     $('#submit-button').on('click', function (event) {
         event.preventDefault();
         selectedObj.shown = true;
@@ -51,7 +48,6 @@ var app = app || {};
         selectedObj.sourceId = sourceToId[selectedObj.source];
         selectedObj.insertRecord(() => app.Results.fetchAll(app.resultsController.addProperties));
         module.selectedObj = selectedObj;
-
     });
 
     module.articleView = articleView;

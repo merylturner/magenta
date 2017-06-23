@@ -74,16 +74,20 @@ input[type ="radio"].radio:hover {
     order: 1;
     margin:1%;
 }
+
 #rule {
     order: 2;
     margin:1%;
 }
+
 #elephant {
     order: 3;
     margin:1%;
 }
 
 
+/*RESULTS SECTION
+=======================================*/
 #voteLeft {
     background-color: #0e51a7;
     height: 15px;
