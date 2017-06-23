@@ -1,0 +1,17 @@
+#bios {
+    display:flex;
+    flex-direction: row;
+    margin: 0 auto;
+    /*width: 80%;*/
+}
+#bios div {
+    text-align: center;
+    margin: 5% auto;
+    width: 100%;
+
+}
+
+#about {
+    display: block;
+    text-align: center;
+}

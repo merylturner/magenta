@@ -2,7 +2,7 @@ body {
         margin: 0;
         float: none;
         width: auto;
-        height: 100%;
+        min-height: 100vh;
 }
 
 html {
@@ -12,14 +12,19 @@ html {
 main {
     text-align: center;
     width: 100vw;
-    margin: 5% auto;
-    height: 80vh;
+    /*margin: 5% auto;*/
+    /*height: 80vh;*/
+}
+section {
+    margin: 10% auto;
+    margin-top: 2%;
 }
 
 footer {
-    width: 100vw;
+    height: 50px;
+    margin-top: -50px;
     text-align: center;
-    display: block;
+    margin-bottom: 0;
 }
 
 br {
@@ -28,7 +33,10 @@ br {
 button {
     background-color: black;
     color:white;
-    margin-top: 10%;
+    margin-top: 6%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0;
 }
 
 canvas {
@@ -36,7 +44,7 @@ canvas {
     margin: 0 auto;
 }
 
-/*FONTS - desktop
+/*FONTS
 =======================================*/
 
 h1 {
@@ -44,6 +52,13 @@ h1 {
     font-weight: 700;
     font-size: 8rem;
 }
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
 
 p {
     font-family: 'Roboto', sans-serif;
@@ -54,9 +69,15 @@ a {
     text-decoration: none;
 }
 
+/*IMAGES
+=======================================*/
 img {
     margin: 2% 2%;
 }
+
+
+/*FORM
+=======================================*/
 
 form {
     margin: 10% 2%;
@@ -64,7 +85,6 @@ form {
 
 form label {
     display: inline;
-    /*width:80%;*/
     font-size: 1.5rem;
     font-weight: 700;
     padding: 5% 2%;
