@@ -43,7 +43,7 @@ var app = app || {};
             options: {
                 title: {
                     display: true,
-                    text: 'Results'
+                    text: 'Source Votes'
                 },
                 responsive: false,
                 maintainAspectRatio: true,

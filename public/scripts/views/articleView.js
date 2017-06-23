@@ -24,9 +24,11 @@ var app = app || {};
     articleView.init = function () {
         let randArticleObj = app.articleController.randomArticle();
         $('main > section').hide();
+        $('footer').hide();
         $('#headline').empty().show();
         $('#headline').append(render(randArticleObj));
         $('#vote').show();
+        $('#political-icons').show();
         selectedObj = randArticleObj;
     };
 

@@ -12,20 +12,23 @@
     <link href="styles/layout.css" type="text/css" rel="stylesheet">
     <link href="styles/modules.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:300,400,700,900" rel="stylesheet">
+    <link rel="icon" href="imgs/favicon.png">
 
     <script id="template" type="text/x-handlebars-template">
-        <p>Where do you think this headline falls on the political scale?</p>
+        <h6>Where do you think this headline falls on the political scale?</h6>
+        <br/>
         <h2 id="article-headline">" {{title}} "</h2>
     </script>
     <script id="results-template" type="text/x-handlebars-template">
-        <h2>Results!</h2>
-        <h5>{{title}}</h5>
-        <p>You voted for: {{selection}}</p>
-        <p>This article headline is from: {{source}}</p>
+        <!--<h2>Results!</h2>-->
+        <h5>"{{title}}"</h5>
+        <br/>
+        <p>This headline is from</p>
+        <br/>
+        <h2 id="article-source">{{source}}</h2>
         <p><a href="{{url}}"> Read Article Here</a></p>
-        <p>Left: {{voteLeft}}, Center Left: {{voteCenterLeft}}, Center: {{voteCenter}}, Center Right: {{voteCenterRight}}, Right:
-            {{voteRight}}
-        </p>
+        <p>You voted for: {{selection}}</p>
+        
     </script>
 </head>
 
@@ -36,14 +39,27 @@
             <img src="imgs/news-report.svg" width="100" height="100" />
             <img src="imgs/debate.svg" width="100" height="100" />
             <h1>Peer Politics</h1>
-            <p>This is the awesome 301 project created by Stephanie, Meryl, Pierre! </p>
+            <div>
+                <p>For our project we are tackling one powerful force in our current political climate: The Media. How do people
+                    perceive the media and how does their language affect our opinions and decisions? Peer Politics strives
+                    to open up your mind and allow you to reflect on yourself and your community.</p>
+                    <br/>
+                    <br/>
+                <h6><b>Here's how the game works</b></h6>
+                <div class="instructions">
+                    <p>1. When you start the game, we will show you a headline, and YOU decide where you think it falls on the political spectrum.</p>
+                    <p>2. Submit your vote!</p>
+                    <p>3. See your results and compare against your peers.</p>
+                    <p>4. Play again!</p>
+                </div>
+            </div>
             <a href="/game"><button id="play-button">PLAY</button></a>
 
         </section>
         <section id="headline"></section>
-        <section>
+        <!--<section>
             <p></p>
-        </section>
+        </section>-->
         <section id="vote">
             <form>
                 <label><input class="radio" type="radio" name="vote" value="voteLeft">Left
@@ -60,10 +76,15 @@
                 <button id="submit-button">SUBMIT</button>
             </form>
         </section>
+        <section id="political-icons">
+        <img src="imgs/donkey.svg" width="50" height="50" id="donkey" />
+        <img src="imgs/elephant.svg" width="50" height="50" id="elephant" />
+        <hr id="rule">
+            </section>
+        <section id="results">
+        </section>
         <section id="canvas">
             <canvas id="results-chart" width="500" height="500"></canvas>
-        </section>
-        <section id="results">
         </section>
         <section id="results-options">
             <a href="/game"><button id="play-again-button">PLAY AGAIN</button></a>
@@ -74,17 +95,17 @@
             <h3>Team Magenta</h3>
             <section id="bios">
                 <div>
-                    <img src="imgs/coder-head.svg" width="200" height="200" />
+                    <img src="imgs/coder.svg" width="200" height="200" />
                     <h2>Stephanie Fitzgerald</h2>
                     <p><a href="https://github.com/sevfitz">Github Profile</a></p>
                 </div>
                 <div>
-                    <img src="imgs/coder-head.svg" width="200" height="200" />
+                    <img src="imgs/coder.svg" width="200" height="200" />
                     <h2>Meryl Turner</h2>
                     <p><a href="https://github.com/merylturner">Github Profile</a></p>
                 </div>
                 <div>
-                    <img src="imgs/coder-head.svg" width="200" height="200" />
+                    <img src="imgs/coder.svg" width="200" height="200" />
                     <h2>Pierre Salumu</h2>
                     <p><a href="https://github.com/jrsalshab">Github Profile</a></p>
                 </div>
@@ -93,8 +114,7 @@
         </section>
     </main>
     <footer>
-        <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a><div>
-            <p>&copy;2017 Team Magenta</p>
+        <p>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> | &copy;2017 Team Magenta</p>
 
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

@@ -12,6 +12,7 @@ var app = app || {};
     };
 
     resultsView.init = function () {
+        $('footer').hide();
         $('main > section').hide();
         $('#results').empty().show();
         $('#canvas').show();

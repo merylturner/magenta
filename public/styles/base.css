@@ -1,8 +1,9 @@
 body {
-        margin: 0;
-        float: none;
-        width: auto;
-        min-height: 100vh;
+    margin: 0;
+    float: none;
+    width: auto;
+    display:flex;
+    flex-direction: column;
 }
 
 html {
@@ -12,30 +13,43 @@ html {
 main {
     text-align: center;
     width: 100vw;
-    /*margin: 5% auto;*/
-    /*height: 80vh;*/
+    order:1;
+    margin-top: 5%;
 }
 section {
-    margin: 10% auto;
+    margin: 5% auto;
     margin-top: 2%;
 }
 
 footer {
-    height: 50px;
-    margin-top: -50px;
     text-align: center;
-    margin-bottom: 0;
+    order:2;
+    color: black;
+    width: 100%;
+    bottom: 0;
+    position:relative;
+}
+
+footer p, footer a {
+    font-size: 1.2rem;
+
 }
 
 br {
-    line-height: 100px;
+    line-height: 10%;
 }
+
+hr {
+    border: .2px solid lightgrey;
+    width: 50%;
+}
+
 button {
     background-color: black;
     color:white;
     margin-top: 6%;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     padding: 0;
 }
 
@@ -59,6 +73,23 @@ h2 {
     font-size: 3rem;
 }
 
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    color: #85004b;
+}
+h5 {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 10%;
+}
+h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
 
 p {
     font-family: 'Roboto', sans-serif;
@@ -80,7 +111,7 @@ img {
 =======================================*/
 
 form {
-    margin: 10% 2%;
+    margin: 2% 2%;
 }
 
 form label {

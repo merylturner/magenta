@@ -7,7 +7,7 @@ var app = app || {};
 
     aboutView.init = function () {
         $('main > section').hide();
-        $('#about').show();
+        $('#about').fadeIn(750);
     };
 
 
