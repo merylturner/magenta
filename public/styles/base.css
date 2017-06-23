@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    float: none;
+    width: auto;
+    display:flex;
+    flex-direction: column;
+}
+
+html {
+    margin: 0;
+}
+
+main {
+    text-align: center;
+    width: 100vw;
+    order:1;
+    margin-top: 5%;
+}
+section {
+    margin: 5% auto;
+    margin-top: 2%;
+}
+
+footer {
+    text-align: center;
+    order:2;
+    color: black;
+    width: 100%;
+    bottom: 0;
+    position:relative;
+}
+
+footer p, footer a {
+    font-size: 1.2rem;
+
+}
+
+br {
+    line-height: 10%;
+}
+
+hr {
+    border: .2px solid lightgrey;
+    width: 50%;
+}
+
+button {
+    background-color: black;
+    color:white;
+    margin-top: 6%;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 0;
+}
+
+canvas {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/*FONTS
+=======================================*/
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 8rem;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    color: #85004b;
+}
+h5 {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 10%;
+}
+h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*IMAGES
+=======================================*/
+img {
+    margin: 2% 2%;
+}
+
+
+/*FORM
+=======================================*/
+
+form {
+    margin: 2% 2%;
+}
+
+form label {
+    display: inline;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 5% 2%;
+    background-color: transparent;
+
+}

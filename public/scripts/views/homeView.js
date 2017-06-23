@@ -8,6 +8,7 @@ var app = app || {};
     homeView.init = function() {
         $('main > section').hide();
         $('#home').show();
+        $('#results-page').hide();
     };
 
     // $('#play-button').on('click', function() {

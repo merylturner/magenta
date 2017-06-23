@@ -43,7 +43,9 @@ var app = app || {};
             options: {
                 title: {
                     display: true,
-                    text: 'Results'
+                    text: `This chart represents all votes for ${app.selectedObj.source}`,
+                    fontSize: 20
+
                 },
                 responsive: false,
                 maintainAspectRatio: true,

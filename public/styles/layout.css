@@ -1,0 +1,69 @@
+/*ABOUT SECTION
+=======================================*/
+#bios {
+    display:flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+#bios div {
+    text-align: center;
+    margin: 5% auto;
+    width: 100%;
+}
+
+#about {
+    display: block;
+    text-align: center;
+    margin-top: 5%;
+}
+
+/*HOME SECTION
+=======================================*/
+#home {
+    margin: 2% 10%;
+}
+
+.instructions {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/*RESULTS SECTION
+=======================================*/
+
+#results-page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#results {
+    order: 1;
+    margin: 0 2%;
+    width: fit-content;
+}
+
+#canvas {
+    order: 2;
+    margin: 0 2%;
+}
+
+#results-chart {
+    margin: 0;
+}
+
+#article-source {
+    text-decoration: underline;
+    border-radius: 10%;
+    /*width: 30%;*/
+    margin: 0 auto;
+    font-size: 4rem;
+    margin-top: 0;
+}
+
+#vote {
+    background-color: transparent;
+}

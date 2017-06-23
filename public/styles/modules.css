@@ -1,11 +1,84 @@
-.blue {
-    background-color: #0e51a7;
-    width: 100px;
-    height: 100px;
+/*GAME SECTION
+=======================================*/
+#article-headline {
+    font-family: 'Merriweather', serif;
+    font-size: 4rem;
+    margin: 0 10%;
 }
 
-.red {
-    background-color: #ff1300;
-    width: 100px;
-    height: 100px;
+input[type ="radio"].radio {
+    -webkit-appearance: none;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    background-color: lightgrey;
+    z-index: 100;
+    display:inline-block;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    top: 13px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: none;
+    outline: none;
+}
+
+.radio:checked:after {
+    content: '';
+    height: 30px;
+    width: 30px;
+    background: darkgrey;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+    border-radius: 50%;
+    border:none;
+    outline: none;
+
+}
+.radio:checked:before {
+    content: '✔';
+    font-size: 2rem;
+    color:white;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    display: block;
+    text-align: center;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 50%;
+    border:none;
+    outline: none;
+}
+
+input[type ="radio"].radio:hover {
+    background-color: #9faab7;
+}
+
+.radio:checked:focus {
+    outline: none;
+}
+
+#political-icons {
+    display:flex;
+    flex-direction: row;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#donkey {
+    order: 1;
+    margin:1%;
+}
+#rule {
+    order: 2;
+    margin:1%;
+}
+#elephant {
+    order: 3;
+    margin:1%;
 }

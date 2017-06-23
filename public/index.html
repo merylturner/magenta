@@ -5,70 +5,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reflect</title>
+    <title>Peer Politics</title>
+    <link href="vendor/styles/skeleton.css" type="text/css" rel="stylesheet">
+    <link href="vendor/styles/normalize.css" type="text/css" rel="stylesheet">
     <link href="styles/base.css" type="text/css" rel="stylesheet">
     <link href="styles/layout.css" type="text/css" rel="stylesheet">
     <link href="styles/modules.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:300,400,700,900" rel="stylesheet">
+    <link rel="icon" href="imgs/favicon.png">
+
     <script id="template" type="text/x-handlebars-template">
-        <p>{{title}}</p>
-        <p>How would you rate the slant of this unknown news source based on the language of this article headline?</p>
+        <h6>Where do you think this headline falls on the political scale?</h6>
+        <br/>
+        <h2 id="article-headline">" {{title}} "</h2>
     </script>
     <script id="results-template" type="text/x-handlebars-template">
-        <h2>Results!</h2>
-        <h5>{{title}}</h5>
+        <!--<h2>Results!</h2>-->
+        <h5>"{{title}}"</h5>
+        <br/>
+        <p>This headline is from</p>
+        <br/>
+        <h2 id="article-source">{{source}}</h2>
+        <p><a href="{{url}}"> Read Article Here</a></p>
         <p>You voted for: {{selection}}</p>
-        <p>This article headline is from: {{source}}</p>
-        <p><a href = "{{url}}"> Read Article Here</a></p>
-        <p>Left: {{voteLeft}}, Center Left: {{voteCenterLeft}}, Center: {{voteCenter}}, Center Right: {{voteCenterRight}}, Right:
-            {{voteRight}}</p>
+        
     </script>
 </head>
 
 <body>
     <main>
         <section id="home">
-            <p>This is the home page</p>
-            <p>description text</p>
-            <a href="/game"><button id="play-button">Play</button></a>
+            <img src="imgs/news.svg" width="100" height="100" />
+            <img src="imgs/news-report.svg" width="100" height="100" />
+            <img src="imgs/debate.svg" width="100" height="100" />
+            <h1>Peer Politics</h1>
+            <div>
+                <p>For our project we are tackling one powerful force in our current political climate: The Media. How do people
+                    perceive the media and how does their language affect our opinions and decisions? Peer Politics strives
+                    to open up your mind and allow you to reflect on yourself and your community.</p>
+                    <br/>
+                    <br/>
+                <h6><b>Here's how the game works</b></h6>
+                <div class="instructions">
+                    <p>1. When you start the game, we will show you a headline, and YOU decide where you think it falls on the political spectrum.</p>
+                    <p>2. Submit your vote!</p>
+                    <p>3. See your results and compare against your peers.</p>
+                    <p>4. Play again!</p>
+                </div>
+            </div>
+            <a href="/game"><button id="play-button">PLAY</button></a>
 
         </section>
         <section id="headline"></section>
-        <section>
+        <!--<section>
             <p></p>
+        </section>-->
+        <section id="political-icons">
+        <img src="imgs/donkey.svg" width="50" height="50" id="donkey" />
+        <img src="imgs/elephant.svg" width="50" height="50" id="elephant" />
+        <hr id="rule">
         </section>
-        <!--TODO: Make the slider that takes the user input. Five buttons for now; maybe switch to slider with values 1-5 later-->
         <section id="vote">
             <form>
-                <input type="radio" name="vote" value="voteLeft">Left
-                <input type="radio" name="vote" value="voteCenterLeft">Center Left
-                <input type="radio" name="vote" value="voteCenter">Center
-                <input type="radio" name="vote" value="voteCenterRight">Center Right
-                <input type="radio" name="vote" value="voteRight">Right</br>
-                <button id="submit-button">Submit</button>
+                <label><input class="radio" type="radio" name="vote" value="voteLeft">Left
+                </label>
+                <label><input class="radio" type="radio" name="vote" value="voteCenterLeft">Center Left
+                </label>
+                <label><input class="radio" type="radio" name="vote" value="voteCenter">Center
+                </label>
+                <label><input class="radio" type="radio" name="vote" value="voteCenterRight">Center Right
+                </label>
+                <label><input class="radio" type="radio" name="vote" value="voteRight">Right
+                </label>
+                </br>
+                <button id="submit-button">SUBMIT</button>
             </form>
         </section>
-        <section id="canvas">
-            <canvas id="results-chart" width="500" height="500"></canvas>
-        </section>
+        <div id="results-page">
         <section id="results">
         </section>
+        <section id="canvas">
+            <canvas id="results-chart" width="400" height="400"></canvas>
+        </section>
+        </div>
         <section id="results-options">
-            <a href="/game"><button id="play-again-button">Play Again</button></a>
-            <a href="/about"><button id="about-us-button">About</button></a>
+            <a href="/game"><button id="play-again-button">PLAY AGAIN</button></a>
+            <a href="/about"><button id="about-us-button">ABOUT</button></a>
         </section>
-        <section id="divs">
-            <div class="blue hidden"></div>
-            <div class="red hidden"></div>
-        </section>
+
         <section id="about">
-            <p>About Us</p>
-            <a href="/">
-                <button id="home-button">Home</button>
-            </a>
-
+            <h3>Team Magenta</h3>
+            <section id="bios">
+                <div>
+                    <img src="imgs/coder.svg" width="200" height="200" />
+                    <h2>Stephanie Fitzgerald</h2>
+                    <p><a href="https://github.com/sevfitz">Github Profile</a></p>
+                </div>
+                <div>
+                    <img src="imgs/coder.svg" width="200" height="200" />
+                    <h2>Meryl Turner</h2>
+                    <p><a href="https://github.com/merylturner">Github Profile</a></p>
+                </div>
+                <div>
+                    <img src="imgs/coder.svg" width="200" height="200" />
+                    <h2>Pierre Salumu</h2>
+                    <p><a href="https://github.com/jrsalshab">Github Profile</a></p>
+                </div>
+            </section>
+            <a href="/"><button id="home-button">HOME</button></a>
         </section>
-
     </main>
+    <footer>
+        <p>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> | &copy;2017 Team Magenta</p>
+
+    </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
