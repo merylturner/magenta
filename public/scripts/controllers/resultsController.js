@@ -19,16 +19,6 @@ var app = app || {};
         
     };
 
-    resultsController.showVoteColor = function () {
-        console.log(app.selectedObj);
-        if(app.selectedObj.voteLeft === 1) {
-            $('.blue').toggleClass('hidden');
-        }
-        else{
-            $('.red').toggleClass('hidden');
-        }
-    }
-
     
     module.resultsController = resultsController;
 }(app));

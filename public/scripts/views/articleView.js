@@ -52,7 +52,6 @@ var app = app || {};
         selectedObj.insertRecord(() => app.Results.fetchAll(app.resultsController.addProperties));
         module.selectedObj = selectedObj;
 
-        app.resultsController.showVoteColor();
     });
 
     module.articleView = articleView;

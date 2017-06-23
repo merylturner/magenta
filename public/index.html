@@ -20,7 +20,6 @@
         <h2 id="article-headline">" {{title}} "</h2>
     </script>
     <script id="results-template" type="text/x-handlebars-template">
-        <!--<h2>Results!</h2>-->
         <h5>"{{title}}"</h5>
         <br/>
         <p>This headline is from</p>
@@ -28,7 +27,9 @@
         <h2 id="article-source">{{source}}</h2>
         <p><a href="{{url}}"> Read Article Here</a></p>
         <p>You voted for: {{selection}}</p>
-        
+        <div id="{{selection}}"></div>
+        <br/>
+        <p id="see-chart">Now see the chart to see how your vote compares to your peers!</p>
     </script>
 </head>
 
@@ -43,27 +44,28 @@
                 <p>For our project we are tackling one powerful force in our current political climate: The Media. How do people
                     perceive the media and how does their language affect our opinions and decisions? Peer Politics strives
                     to open up your mind and allow you to reflect on yourself and your community.</p>
-                    <br/>
-                    <br/>
-                <h6><b>Here's how the game works</b></h6>
-                <div class="instructions">
-                    <p>1. When you start the game, we will show you a headline, and YOU decide where you think it falls on the political spectrum.</p>
-                    <p>2. Submit your vote!</p>
-                    <p>3. See your results and compare against your peers.</p>
-                    <p>4. Play again!</p>
+                <br/>
+                <br/>
+                <div>
+                    <a href="/" class="see-instructions">Here's how the game works &rarr;</a>
+                    
+                    <div class="instructions">
+                        <p>1. When you start the game, we will show you a headline without showing you the source, and YOU decide
+                            where you think that headline's source falls on the political spectrum.</p>
+                        <p>2. Submit your vote!</p>
+                        <p>3. See your results and compare against your peers.</p>
+                        <p>4. Play again!</p>
+                    </div>
                 </div>
-            </div>
-            <a href="/game"><button id="play-button">PLAY</button></a>
+                <a href="/game"><button id="play-button">PLAY</button></a>
 
         </section>
         <section id="headline"></section>
-        <!--<section>
-            <p></p>
-        </section>-->
+
         <section id="political-icons">
-        <img src="imgs/donkey.svg" width="50" height="50" id="donkey" />
-        <img src="imgs/elephant.svg" width="50" height="50" id="elephant" />
-        <hr id="rule">
+            <img src="imgs/donkey.svg" width="50" height="50" id="donkey" />
+            <img src="imgs/elephant.svg" width="50" height="50" id="elephant" />
+            <hr id="rule">
         </section>
         <section id="vote">
             <form>
@@ -82,11 +84,11 @@
             </form>
         </section>
         <div id="results-page">
-        <section id="results">
-        </section>
-        <section id="canvas">
-            <canvas id="results-chart" width="400" height="400"></canvas>
-        </section>
+            <section id="results">
+            </section>
+            <section id="canvas">
+                <canvas id="results-chart" width="400" height="400"></canvas>
+            </section>
         </div>
         <section id="results-options">
             <a href="/game"><button id="play-again-button">PLAY AGAIN</button></a>
@@ -99,16 +101,26 @@
                 <div>
                     <img src="imgs/coder.svg" width="200" height="200" />
                     <h2>Stephanie Fitzgerald</h2>
+                    <p>As a young person, Stephanie always responded to political conversations by saying she "wasn't political,"
+                        as a way to avoid ideological clashes. Over time she has grown more interested both in politics and
+                        in promoting civil discussion.</p>
                     <p><a href="https://github.com/sevfitz">Github Profile</a></p>
                 </div>
                 <div>
                     <img src="imgs/coder.svg" width="200" height="200" />
                     <h2>Meryl Turner</h2>
+                    <p>When you don’t have an idea for an app.. make it political. I’ve never really considered myself a political
+                        person; I’m easy-going and open to a discussion. The year of 2017 has brought quite a change in our
+                        society, and learning more about the media and how they have influenced our opinions and decisions
+                        can help create more progress and less divide. </p>
                     <p><a href="https://github.com/merylturner">Github Profile</a></p>
                 </div>
                 <div>
                     <img src="imgs/coder.svg" width="200" height="200" />
                     <h2>Pierre Salumu</h2>
+                    <p>Not from the USA (from DRCongo) and also not a big politics person but in this political climate where
+                        politicians’ messages seem to be more ambiguous taking advantage of uninformed votes, something had
+                        to be done. Called upon two experts, Stephanie and Meryl to take action and the rest is history.</p>
                     <p><a href="https://github.com/jrsalshab">Github Profile</a></p>
                 </div>
             </section>

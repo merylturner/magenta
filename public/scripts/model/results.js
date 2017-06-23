@@ -43,7 +43,7 @@ var app = app || {};
             options: {
                 title: {
                     display: true,
-                    text: `This chart represents all votes for ${app.selectedObj.source}`,
+                    text: `People think headlines from ${app.selectedObj.source} are considered`,
                     fontSize: 20
 
                 },
