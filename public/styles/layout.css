@@ -4,11 +4,16 @@
     display:flex;
     flex-direction: row;
     margin: 0 auto;
+    width: 90%;
 }
 #bios div {
     text-align: center;
-    margin: 5% auto;
+    margin: 5% 2%;
     width: 100%;
+}
+
+#bios p {
+    text-align: justify;
 }
 
 #about {
@@ -42,23 +47,29 @@
 
 #results {
     order: 1;
-    margin: 0 2%;
-    width: fit-content;
+    margin: 0 auto;
+    width: 50%;
+}
+
+#results h5 {
+    margin: 0;
+    flex-grow: 1;
 }
 
 #canvas {
     order: 2;
-    margin: 0 2%;
+    margin: 0;
+    flex-grow: 1;
 }
 
 #results-chart {
-    margin: 0;
+    width: 50%;
+    margin: 0 auto;
 }
 
 #article-source {
     text-decoration: underline;
     border-radius: 10%;
-    /*width: 30%;*/
     margin: 0 auto;
     font-size: 4rem;
     margin-top: 0;
@@ -67,3 +78,15 @@
 #vote {
     background-color: transparent;
 }
+
+#see-chart {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+    font-style: italic;
+}
+
+#hidden {
+    display:none;
+}
+

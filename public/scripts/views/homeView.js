@@ -9,15 +9,22 @@ var app = app || {};
         $('main > section').hide();
         $('#home').show();
         $('#results-page').hide();
+
+        homeView.showTeasers();
     };
 
-    // $('#play-button').on('click', function() {
-    //     console.log('play button clicked');
-    // // COMMENT: stretch goal: filtering by source or something else?
-	// // sourceArticles.with = attr => sourceArticles.all.filter( sourceArticle => sourceArticle[attr]);
-    // });
+
+    homeView.showTeasers = function () {
+        $('.instructions').hide();
+        
+        $('.see-instructions').on('click', function () {
+            event.preventDefault();
+            $(this).toggleClass('hidden');
+            $(this).parent().find($('.instructions')).show();
+            $(this).hide();
+        })
+    }
 
     module.homeView = homeView;
 }(app));
 
-// TODO: hide everything, show this, and event listener/handler for button
