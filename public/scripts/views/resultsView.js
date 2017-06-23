@@ -15,7 +15,7 @@ var app = app || {};
         $('footer').hide();
         $('main > section').hide();
         $('#results').empty().show();
-        $('#canvas').show();
+        $('#results-page').show();
 
         $('#results').append(render(app.selectedObj));
         $('#results-options').show();

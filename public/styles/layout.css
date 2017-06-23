@@ -31,23 +31,39 @@
 
 /*RESULTS SECTION
 =======================================*/
-#results-data {
-    display:flex;
+
+#results-page {
+    display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 #results {
     order: 1;
+    margin: 0 2%;
+    width: fit-content;
 }
 
 #canvas {
     order: 2;
+    margin: 0 2%;
+}
+
+#results-chart {
+    margin: 0;
 }
 
 #article-source {
     text-decoration: underline;
     border-radius: 10%;
-    width: 30%;
+    /*width: 30%;*/
     margin: 0 auto;
-    font-size: 5rem;
+    font-size: 4rem;
+    margin-top: 0;
+}
+
+#vote {
+    background-color: transparent;
 }

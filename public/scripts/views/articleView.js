@@ -29,6 +29,7 @@ var app = app || {};
         $('#headline').append(render(randArticleObj));
         $('#vote').show();
         $('#political-icons').show();
+        $('#results-page').hide();
         selectedObj = randArticleObj;
     };
 
