@@ -13,10 +13,10 @@ var app = app || {};
         app.selectedObj.voteCenter = resultsObj.count_center;
         app.selectedObj.voteCenterRight = resultsObj.count_center_right;
         app.selectedObj.voteRight = resultsObj.count_right;
-
+        console.log(app.selectedObj);
         app.resultsView.init();
         return resultsObj;
-        
+
     };
 
     resultsController.showVoteColor = function () {
@@ -29,6 +29,6 @@ var app = app || {};
         }
     }
 
-    
+
     module.resultsController = resultsController;
 }(app));
