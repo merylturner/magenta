@@ -2,7 +2,7 @@
 =======================================*/
 #bios {
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 auto;
     width: 90%;
 }
@@ -29,7 +29,7 @@
 }
 
 .instructions {
-    width: 40%;
+    width: 70%;
     margin: 0 auto;
     text-align: center;
 }
@@ -85,4 +85,12 @@
     font-style: italic;
 }
 
+@media screen and (min-width: 500px) {
+    #bios {
+        flex-direction: row;
+    }
 
+    .instructions {
+        width: 40%;
+    }
+}

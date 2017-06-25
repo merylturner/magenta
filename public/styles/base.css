@@ -22,6 +22,7 @@ section {
 }
 
 footer {
+    margin: 5% auto;
     text-align: center;
     order:2;
     color: black;
@@ -56,6 +57,7 @@ button {
 canvas {
     text-align: center;
     margin: 0 auto;
+    max-width: 300px;
 }
 
 /*FONTS
@@ -64,7 +66,7 @@ canvas {
 h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    font-size: 8rem;
+    font-size: 6rem;
 }
 
 h2 {
@@ -79,6 +81,7 @@ h3 {
     font-size: 4rem;
     color: #85004b;
 }
+
 h5 {
     font-family: 'Merriweather', serif;
     font-size: 2rem;
@@ -120,4 +123,14 @@ form label {
     font-weight: 700;
     padding: 5% 2%;
     background-color: transparent;
+}
+
+@media screen and (min-width: 500px) {
+    h1 {
+        font-size: 8rem;
+    }
+    canvas {
+    min-width: 400px;
+    max-width: 400px;
+    }
 }

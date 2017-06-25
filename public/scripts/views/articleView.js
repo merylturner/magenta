@@ -19,6 +19,8 @@ var app = app || {};
         } else {
             app.Article.selectRandomArticle();
         }
+        $('body').scrollTop(0);
+        $('input[name=vote]').prop('checked',false);
         $('main > section').hide();
         $('footer').hide();
         $('#headline').empty().show();
@@ -27,7 +29,7 @@ var app = app || {};
         $('#political-icons').show();
         $('#results-page').hide();
     };
-    
+
     module.selectedObj = selectedObj;
     module.articleView = articleView;
 }(app));

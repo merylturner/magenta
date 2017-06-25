@@ -6,6 +6,7 @@ var app = app || {};
     const homeView = {};
 
     homeView.init = function() {
+        $('body').scrollTop(0);
         $('main > section').hide();
         $('#home').show();
         $('#results-page').hide();

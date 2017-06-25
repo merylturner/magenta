@@ -21,7 +21,7 @@ app.get('/about', (request, response) => response.sendFile('index.html', { root:
 
 loadDB();
 
-var sources = [`the-new-york-times`, `the-huffington-post`, `usa-today`, `daily-mail`, `breitbart-news`];
+var sources = [`the-new-york-times`, `the-huffington-post`, `usa-today`, `daily-mail`, `the-wall-street-journal`];
 
 sources.forEach((source) => {
     app.get(`/${source}`, (request, response) => {
@@ -96,7 +96,7 @@ function loadSourceData() {
 		(2, 'the-new-york-times',0,0,0,0,0),
 		(3, 'usa-today',0,0,0,0,0),
 		(4, 'daily-mail',0,0,0,0,0),
-		(5, 'breitbart-news',0,0,0,0,0)
+		(5, 'the-wall-street-journal',0,0,0,0,0)
 		ON CONFLICT DO NOTHING;`);
 }
 

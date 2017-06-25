@@ -12,7 +12,7 @@ var app = app || {};
     Article.sourceData = [];
     Article.randomArticle = {};
 
-    Article.sources = [`the-new-york-times`, `the-huffington-post`, `usa-today`, `daily-mail`, `breitbart-news`];
+    Article.sources = [`the-new-york-times`, `the-huffington-post`, `usa-today`, `daily-mail`, `the-wall-street-journal`];
 
     Article.addProps = data => {
         Article.sourceData = JSON.parse(data).articles;
@@ -40,10 +40,10 @@ var app = app || {};
 
     Article.loadArticles = function () {
         if (Article.filtered.length < 1) {
-        Article.filtered = Article.all.map(obj => new Article(obj));
-        } 
+            Article.filtered = Article.all.map(obj => new Article(obj));
+        }
     };
-    
+
     Article.selectRandomArticle = function () {
         let randomNum = Math.floor(Math.random() * (Article.filtered.length));
         Article.randomArticle = Article.filtered[randomNum];
