@@ -21,9 +21,8 @@ app.get('/about', (request, response) => response.sendFile('index.html', { root:
 
 loadDB();
 
-var sourcesArray = ['the-new-york-times', 'the-huffington-post', 'usa-today', 'daily-mail', 'breitbart-news'];
 
-sourcesArray.forEach((source) => {
+app.Article.sources.forEach((source) => {
     app.get(`/${source}`, (request, response) => {
         superagent
 			.get(`https://newsapi.org/v1/articles?source=${source}&sortBy=top&apiKey=${process.env.API_KEY}`)

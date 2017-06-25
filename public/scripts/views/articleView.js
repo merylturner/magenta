@@ -20,15 +20,15 @@ var app = app || {};
     };
 
     articleView.init = function () {
-        let randArticleObj = app.articleController.randomArticle();
         $('main > section').hide();
         $('footer').hide();
         $('#headline').empty().show();
-        $('#headline').append(render(randArticleObj));
+        $('#headline').append(render(app.Article.randomArticle));
         $('#vote').show();
         $('#political-icons').show();
         $('#results-page').hide();
-        selectedObj = randArticleObj;
+        
+        selectedObj = app.Article.randomArticle;
     };
 
     $('#submit-button').on('click', function (event) {
