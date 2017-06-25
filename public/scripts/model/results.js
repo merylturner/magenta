@@ -46,7 +46,7 @@ var app = app || {};
                     text: `People think headlines from ${app.selectedObj.sourceToDisplay} are...`,
                     fontSize: 20
                 },
-                responsive: false,
+                responsive: true,
                 maintainAspectRatio: true,
             }
 

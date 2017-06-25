@@ -5,23 +5,35 @@ var app = app || {};
 (function (module) {
     const articleController = {};
 
-    articleController.randomArticle = function () {
-        let nytArticle = app.Article.selectRandom(app.Article.loadNytArticles());
-        let huffpoArticle = app.Article.selectRandom(app.Article.loadHuffpoArticles());
-        let usaArticle = app.Article.selectRandom(app.Article.loadUsaArticles());
-        let dmArticle = app.Article.selectRandom(app.Article.loadDmArticles());
-        let breitArticle = app.Article.selectRandom(app.Article.loadBreitArticles());
-        let consolidatedArray = [huffpoArticle, nytArticle, usaArticle, dmArticle, breitArticle];
-        return app.Article.selectRandom(consolidatedArray);
+    let sourceToId = {
+        'the-huffington-post': 1,
+        'the-new-york-times': 2,
+        'usa-today': 3,
+        'daily-mail': 4,
+        'the-wall-street-journal': 5
     };
 
-    articleController.init = function () {
-        app.nytArticles.requestArticles(app.articleView.init);
-        app.huffpoArticles.requestArticles(app.articleView.init);
-        app.usaArticles.requestArticles(app.articleView.init);
-        app.dmArticles.requestArticles(app.articleView.init);
-        app.breitArticles.requestArticles(app.articleView.init);
-    };
+    $('#submit-button').on('click', function (event) {
+        event.preventDefault();
+        let selection = $('input[type="radio"]:checked').val();
+        if (selection) {
+            app.selectedObj = app.Article.randomArticle;
+            app.selectedObj.selection = selection;
+            app.selectedObj.shown = true;
+            app.Article.filtered = app.Article.filtered.filter(t => t.shown === false);
+            app.selectedObj.voteLeft = 0;
+            app.selectedObj.voteCenterLeft = 0;
+            app.selectedObj.voteCenter = 0;
+            app.selectedObj.voteCenterRight = 0;
+            app.selectedObj.voteRight = 0;
+
+            if (app.selectedObj.hasOwnProperty(selection)) {
+                app.selectedObj[selection] += 1;
+            }
+            app.selectedObj.sourceId = sourceToId[app.selectedObj.source];
+            app.selectedObj.insertRecord(() => app.Results.fetchAll(app.resultsController.addProperties));
+        }
+    });
 
     module.articleController = articleController;
 }(app));
