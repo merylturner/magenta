@@ -11,7 +11,6 @@ var app = app || {};
     Article.filtered = [];
     Article.sourceData = [];
     Article.randomArticle = {};
-    let retrievedSources = 0;
 
     Article.sources = [`the-new-york-times`, `the-huffington-post`, `usa-today`, `daily-mail`, `breitbart-news`];
 
@@ -23,36 +22,31 @@ var app = app || {};
     };
 
     Article.requestArticles = () => {
-        Article.sources.forEach((source) => {
-            $.get(`/${source}`)
-                .then(function(data) {Article.addProps(data)}, err => console.error(err))
-                .then(() => {
-                    retrievedSources++;
-                    if (retrievedSources === 5) {
-                        Article.loadArticles(Article.selectRandomArticle);
-                    }
-                })
-                .then(app.articleView.init)
-        })
+        if (Article.filtered.length === 0) {
+            let retrievedSources = 0;
+            Article.sources.forEach((source) => {
+                $.get(`/${source}`)
+                    .then(function (data) { Article.addProps(data) }, err => console.error(err))
+                    .then(() => {
+                        retrievedSources++;
+                        if (retrievedSources === 5) {
+                            Article.loadArticles();
+                            app.articleView.init();
+                        }
+                    })
+            })
+        }
     };
 
-    Article.loadArticles = function (callback) {
+    Article.loadArticles = function () {
         if (Article.filtered.length < 1) {
-        Article.filtered = Article.all.map(obj => new Article(obj))
-            .reduce((titles, title) => {
-                if (titles.indexOf(title) === -1) titles.push(title);
-                return titles;
-            }, [])
-        } else {
-            Article.filtered = Article.filtered.filter(t => t.shown === false);
-        }
-        callback();
+        Article.filtered = Article.all.map(obj => new Article(obj));
+        } 
     };
     
     Article.selectRandomArticle = function () {
         let randomNum = Math.floor(Math.random() * (Article.filtered.length));
         Article.randomArticle = Article.filtered[randomNum];
-        console.log('In selectRandomArticle, article.filtered is', Article.filtered);
     };
 
     Article.prototype.insertRecord = function (callback) {
