@@ -21,8 +21,9 @@ app.get('/about', (request, response) => response.sendFile('index.html', { root:
 
 loadDB();
 
+var sources = [`the-new-york-times`, `the-huffington-post`, `usa-today`, `daily-mail`, `breitbart-news`];
 
-app.Article.sources.forEach((source) => {
+sources.forEach((source) => {
     app.get(`/${source}`, (request, response) => {
         superagent
 			.get(`https://newsapi.org/v1/articles?source=${source}&sortBy=top&apiKey=${process.env.API_KEY}`)
@@ -52,7 +53,7 @@ app.post('/articles', (request, response) => {
 			count_center_right =count_center_right + $4,
 			count_right =count_right + $5
 			WHERE id = $6`,
-				[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight, request.body.voteRight, request.body.sourceId],
+				[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight,request.body.voteRight, request.body.sourceId],
 
 				function (err) {
     if (err) console.error(err);
@@ -78,12 +79,12 @@ function loadDB() {
     client.query(`
 		CREATE TABLE IF NOT EXISTS
 		articles (
-			title varchar(255) PRIMARY KEY NOT NULL,
-			description varchar(255) NOT NULL,
-			url varchar(255) NOT NULL,
+			title varchar(500) PRIMARY KEY NOT NULL,
+			description varchar(500) NOT NULL,
+			url varchar(500) NOT NULL,
 			source_id int references sources(id) NOT NULL,
 			author varchar(555) NOT NULL,
-			url_to_image varchar(255) NOT NULL,
+			url_to_image varchar(500) NOT NULL,
 			published_at timestamp);`)
 		.catch(console.error);
 }

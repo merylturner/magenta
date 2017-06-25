@@ -37,20 +37,22 @@ var app = app || {};
     };
 
     Article.loadArticles = function (callback) {
-        console.log('loadArticles is running');
+        if (Article.filtered.length < 1) {
         Article.filtered = Article.all.map(obj => new Article(obj))
             .reduce((titles, title) => {
                 if (titles.indexOf(title) === -1) titles.push(title);
                 return titles;
             }, [])
-            .filter(t => t.shown === false);
+        } else {
+            Article.filtered = Article.filtered.filter(t => t.shown === false);
+        }
         callback();
     };
     
     Article.selectRandomArticle = function () {
         let randomNum = Math.floor(Math.random() * (Article.filtered.length));
         Article.randomArticle = Article.filtered[randomNum];
-        console.log('randomarticle is', Article.randomArticle);
+        console.log('In selectRandomArticle, article.filtered is', Article.filtered);
     };
 
     Article.prototype.insertRecord = function (callback) {

@@ -27,13 +27,21 @@ var app = app || {};
         $('#vote').show();
         $('#political-icons').show();
         $('#results-page').hide();
-        
+
         selectedObj = app.Article.randomArticle;
     };
 
+    $('#play-button').on('click', function() {
+        console.log('loadArticles called by play button');
+        app.Article.loadArticles(app.Article.selectRandomArticle);
+    });
+
     $('#submit-button').on('click', function (event) {
         event.preventDefault();
+
         selectedObj.shown = true;
+        app.Article.filtered = app.Article.filtered.filter(t => t.shown === false);
+        
         let selection = $('input[type="radio"]:checked').val();
         selectedObj.selection = selection;
         selectedObj.voteLeft = 0;
