@@ -7,7 +7,7 @@ var app = app || {};
     let selectedObj = {};
 
     const render = function (title) {
-        let template = Handlebars.compile($('#template').text()); // eslint-disable-line
+        let template = Handlebars.compile($('#template').text());
 
         return template(title);
     };
@@ -20,7 +20,7 @@ var app = app || {};
             app.Article.selectRandomArticle();
         }
         $('body').scrollTop(0);
-        $('input[name=vote]').prop('checked',false);
+        $('input[name=vote]').prop('checked', false);
         $('main > section').hide();
         $('footer').hide();
         $('#headline').empty().show();

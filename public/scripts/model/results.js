@@ -49,7 +49,6 @@ var app = app || {};
                 responsive: true,
                 maintainAspectRatio: true,
             }
-
         });
     }
 

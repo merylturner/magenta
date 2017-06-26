@@ -125,12 +125,16 @@ form label {
     background-color: transparent;
 }
 
+
+/*MEDIA QUERIES
+=======================================*/
+
 @media screen and (min-width: 500px) {
     h1 {
         font-size: 8rem;
     }
     canvas {
-    min-width: 400px;
-    max-width: 400px;
+        min-width: 400px;
+        max-width: 400px;
     }
 }
