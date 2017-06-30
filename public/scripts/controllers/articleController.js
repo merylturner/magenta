@@ -21,6 +21,7 @@ var app = app || {};
             app.selectedObj.selection = selection;
             app.selectedObj.shown = true;
             app.Article.filtered = app.Article.filtered.filter(t => t.shown === false);
+
             app.selectedObj.voteLeft = 0;
             app.selectedObj.voteCenterLeft = 0;
             app.selectedObj.voteCenter = 0;

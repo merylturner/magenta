@@ -2,10 +2,10 @@
 
 var app = app || {};
 
-(function(module){
+(function (module) {
     const homeView = {};
 
-    homeView.init = function() {
+    homeView.init = function () {
         $('body').scrollTop(0);
         $('main > section').hide();
         $('#home').show();
@@ -27,4 +27,3 @@ var app = app || {};
 
     module.homeView = homeView;
 }(app));
-

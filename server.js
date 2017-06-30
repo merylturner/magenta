@@ -13,7 +13,7 @@ const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 app.get('/game', (request, response) => response.sendFile('index.html', { root: './public' }));
@@ -30,7 +30,6 @@ sources.forEach((source) => {
 			.end((err, superagentResponse) => response.send(superagentResponse.text));
     });
 });
-
 
 app.post('/articles', (request, response) => {
     client.query(`
@@ -53,7 +52,7 @@ app.post('/articles', (request, response) => {
 			count_center_right =count_center_right + $4,
 			count_right =count_right + $5
 			WHERE id = $6`,
-				[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight,request.body.voteRight, request.body.sourceId],
+				[request.body.voteLeft, request.body.voteCenterLeft, request.body.voteCenter, request.body.voteCenterRight, request.body.voteRight, request.body.sourceId],
 
 				function (err) {
     if (err) console.error(err);
@@ -108,10 +107,7 @@ app.get('/sources', function (request, response) {
 		.catch(err => console.error(err));
 });
 
-
-
 app.get('*', (request, response) => response.sendFile('index.html', { root: './public' }));
-
 
 app.listen(PORT, function () {
     console.log('Your port is running on:', PORT);
